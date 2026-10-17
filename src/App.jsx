@@ -1,17 +1,85 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import Header from './components/layout/Header'
+import Footer from './components/layout/Footer'
+import MobileStickyBar from './components/layout/MobileStickyBar'
+import NotFound from './components/layout/NotFound'
+import HeroSection from './sections/HeroSection'
+import SignatureSection from './sections/SignatureSection'
+import MenuSection from './sections/MenuSection'
+import OffersSection from './sections/OffersSection'
+import AboutSection from './sections/AboutSection'
+import GallerySection from './sections/GallerySection'
+import TestimonialsSection from './sections/TestimonialsSection'
+import LocationSection from './sections/LocationSection'
+import FaqSection from './sections/FaqSection'
+import ReservationSection from './sections/ReservationSection'
+import { initAnalytics } from './utils/analytics'
 
 export default function App() {
+  const [currentRoute, setCurrentRoute] = useState(window.location.pathname)
+
+  useEffect(() => {
+    initAnalytics()
+
+    const handlePopState = () => {
+      setCurrentRoute(window.location.pathname)
+    }
+    window.addEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
+
+  const is404 = currentRoute !== '/' && currentRoute !== '' && !currentRoute.startsWith('/#')
+
+  if (is404) {
+    return (
+      <div className="app-shell">
+        <a href="#main-content" className="skip-link">
+          الانتقال إلى المحتوى الرئيسي
+        </a>
+        <Header />
+        <main id="main-content">
+          <NotFound
+            onGoHome={() => {
+              window.history.pushState({}, '', '/')
+              setCurrentRoute('/')
+            }}
+          />
+        </main>
+        <Footer />
+        <MobileStickyBar />
+      </div>
+    )
+  }
+
   return (
     <div className="app-shell">
+      {/* Accessible Skip Link */}
       <a href="#main-content" className="skip-link">
         الانتقال إلى المحتوى الرئيسي
       </a>
+
+      {/* Header & Navigation */}
+      <Header />
+
+      {/* Main Sections */}
       <main id="main-content">
-        <div className="container" style={{ paddingBlock: 'var(--space-12)' }}>
-          <h1>مطعم دار الحطب</h1>
-          <p>مشويات على الفحم وطواجن فخار أصيلة</p>
-        </div>
+        <HeroSection />
+        <SignatureSection />
+        <MenuSection />
+        <OffersSection />
+        <AboutSection />
+        <GallerySection />
+        <TestimonialsSection />
+        <LocationSection />
+        <FaqSection />
+        <ReservationSection />
       </main>
+
+      {/* Footer */}
+      <Footer />
+
+      {/* Mobile Sticky Action Bar */}
+      <MobileStickyBar />
     </div>
   )
 }

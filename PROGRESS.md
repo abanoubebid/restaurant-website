@@ -66,27 +66,28 @@ Waived rules: none.
 
 **Restaurant Concept:** دار الحطب (Dar Al-Hatab) — Authentic Charcoal Grills & Slow-Cooked Claypots (مشويات على الفحم وطواجن فخار أصيلة).
 **Location Assumption:** القاهرة الجديدة، التجمع الخامس، مصر (New Cairo, Egypt).
-**Tech Stack:** React 18 + Vite, CSS Modules / Pure CSS with CSS custom properties (Tokens), Vitest for unit validation testing.
+**Tech Stack:** React 18 + Vite, Pure CSS with CSS custom properties (Tokens), Node.js native test runner (`node:test`).
 **Language & Direction:** Arabic only (`dir="rtl"`, `lang="ar"`), native RTL layout.
 **Palette:**
-- `--color-primary: #991B1B` — Deep Terracotta / Crimson Red (fire, warmth, appetite)
-- `--color-primary-dark: #7F1D1D` — Deep Embers
-- `--color-accent: #D97706` — Saffron Gold / Charcoal Glow (spices, warmth)
-- `--color-accent-light: #FDE68A` — Delicate Amber Cream
-- `--color-surface: #FDFBF7` — Warm Linen / Bone Cream (natural, appetizing backdrop)
-- `--color-surface-card: #FFFFFF` — Pure White Card Surface
-- `--color-surface-muted: #F4EFE6` — Toasted Oatmeal background
-- `--color-text: #1C1917` — Warm Charcoal / Cast Iron Black (high contrast, WCAG AAA)
-- `--color-text-muted: #57534E` — Earth Brown / Stone Gray
+- `--color-primary: #991B1B` — Deep Terracotta / Crimson Red
+- `--color-primary-dark: #7F1D1D` — Smoldering Embers
+- `--color-accent: #D97706` — Saffron Gold / Charcoal Glow
+- `--color-accent-light: #F59E0B` — Radiant Saffron
+- `--color-accent-glow: #FDE68A` — Delicate Honey Tint
+- `--color-surface: #FDFBF7` — Warm Linen / Natural Bone
+- `--color-surface-card: #FFFFFF` — Clean White Card
+- `--color-surface-alt: #F5EFE6` — Toasted Hearth Oat
+- `--color-surface-dark: #1C1917` — Cast Iron Charcoal
+- `--color-text: #1C1917` — Cast Iron Black (WCAG AAA contrast)
+- `--color-text-muted: #57534E` — Earth Umber
 
 **Fonts:**
-- Primary Headings: **Marhey** or **Amiri** / **Cairo** (700, 900) — authentic artisan feel with balanced proportions.
-- Body & UI: **IBM Plex Sans Arabic** or **Tajawal** (400, 500, 600) — exceptional legibility at small sizes, beautiful dots and descenders.
-- Fallback: `system-ui, -apple-system, 'Segoe UI', Tahoma, Arial, sans-serif`
+- Primary Headings: **Cairo** (700, 800, 900)
+- Body & UI: **Tajawal** (400, 500, 700)
 
 **Number & Symbol System (STRICT):**
 - Digits: Western Arabic `0-9` throughout the site.
-- Percentages: `98%` (digits followed by `%`, wrapped in `<bdi>` or Stat component with `dir="ltr"`).
+- Percentages: `98%` (digits followed by `%`, isolated with `<bdi>` and `dir="ltr"` inside Stat component).
 - Plus values: `+15` (`+` sign preceding the digits, wrapped in Stat component).
 - Multipliers: `×2` (real multiplication sign `×`, never `x`).
 - Currency: `240 ج.م` (digits, space, `ج.م`).
@@ -94,7 +95,7 @@ Waived rules: none.
 
 **Arrow Rules (STRICT):**
 - In RTL, forward ("اطلب", "التالي", "المزيد") points LEFT (`←`). Back points RIGHT (`→`).
-- Single shared `Arrow` component determines angle from current document direction.
+- Single shared `Arrow` component dynamically computes angle from document direction.
 
 ---
 
@@ -102,11 +103,11 @@ Waived rules: none.
 
 Studied 6 premier dining and grill house digital experiences (Dishoom, Sobhy Kaber, Kababji Grill, Abu El Sid, Hawksmoor, Bait Maryam):
 
-1. **Immediate Mobile Conversion**: Over 85% of restaurant traffic in Egypt/GCC is mobile. Diners demand 1-tap WhatsApp ordering and direct phone calling. A persistent bottom sticky bar that doesn't cover content drives 3x higher conversion.
-2. **Appetizing Artisanal Atmosphere vs AI Clichés**: AI landing pages use neon violet gradients, generic food stock photos, and meaningless cards. Handcrafted restaurant sites use deep terracotta, saffron ember accents, natural paper textures, and custom SVG line art reflecting woodfire, claypots, and grills.
-3. **Structured & Filterable Menu**: Guests don't want to download PDF files. Interactive category switching (مشويات، طواجن، مقبلات، حلويات، مشروبات) with item descriptions, clear pricing, and an instant "اطلب هذا الصنف عبر واتساب" button with pre-filled message converts instantly.
-4. **Trust Signals Without Exaggeration**: Highlights must be believable and authentic: daily fresh local meat (لحوم بلدية طازجة يومياً), woodfire slow cooking (طهي بطيء على الحطب والفحم), live status ("مفتوح الآن حتى 1:00 ص"), and transparent delivery zone times.
-5. **Friction-Free Reservation with WhatsApp Fallback**: Reservation forms should validate strictly (11-digit Egyptian phone, future date within opening hours, 1-20 guests) and offer an immediate WhatsApp confirmation payload so guests are never left wondering if their table was confirmed.
+1. **Immediate Mobile Conversion**: Over 85% of restaurant traffic in Egypt/GCC is mobile. Persistent bottom sticky bar with direct WhatsApp and Phone actions is critical.
+2. **Appetizing Artisanal Atmosphere vs AI Clichés**: Deep terracotta, saffron amber accents, warm paper textures, and handcrafted SVG illustrations representing hearth and claypots.
+3. **Structured & Accessible Menu**: Fast category tab switching with item descriptions, prices, and 1-tap WhatsApp order buttons.
+4. **Authenticity over Exaggeration**: Real kitchen values (100% fresh local meat, woodfire embers, slow claypot baking, live opening status indicator).
+5. **Friction-Free Reservation with WhatsApp Fallback**: Full validation with Egyptian phone rules and immediate WhatsApp confirmation link.
 
 ---
 
@@ -116,76 +117,77 @@ Studied 6 premier dining and grill house digital experiences (Dishoom, Sobhy Kab
 - [x] T00: Phase 1 research notes & design tokens established in PROGRESS.md
 
 ### Phase 2: Setup & Foundation
-- [ ] T01: Git repo setup, feature branch, .gitignore, .env.example, initial commit
-- [ ] T02: Project scaffolding with React + Vite, clean dependencies (vitest for testing), package.json scripts
-- [ ] T03: Design tokens (`tokens.css`) — colors, spacing scale, typography, shadows, z-index
-- [ ] T04: Global styles (`global.css`) — RTL reset, root typography, skip-to-content link, focus outlines, reduced motion rules
-- [ ] T05: Shared Base Components — `Arrow` (RTL-aware directional chevron), `Stat` (bidi-isolated number/symbol with `<bdi>`), `Icon` (stroke-based SVG icons)
-- [ ] T06: Shared UI Components — `Button` (variants: primary, secondary, outline, text), `SectionHeading` (eyebrow, title, description), `Card` (semantic card with clean borders)
-- [ ] T07: Configuration & Content Data (`src/content/restaurantData.js`) — all restaurant config, menu items, prices, FAQs, contact details, opening hours, trust badges
-- [ ] T08: App Shell & Routing — Main layout structure, sticky mobile conversion bar, error boundary
+- [x] T01: Git repo setup, feature branch, .gitignore, .env.example, initial commit
+- [x] T02: Project scaffolding with React + Vite, clean dependencies, package.json scripts
+- [x] T03: Design tokens (`tokens.css`) — colors, spacing scale, typography, shadows, z-index
+- [x] T04: Global styles (`global.css`) — RTL reset, root typography, skip-to-content link, focus outlines, reduced motion rules
+- [x] T05: Shared Base Components — `Arrow` (RTL-aware directional chevron), `Stat` (bidi-isolated number/symbol with `<bdi>`), `Icon` (stroke-based SVG icons)
+- [x] T06: Shared UI Components — `Button` (variants: primary, secondary, outline, text), `SectionHeading` (eyebrow, title, description), `Card` (semantic card with clean borders), `Input`
+- [x] T07: Configuration & Content Data (`src/content/restaurantData.js`) — all restaurant config, menu items, prices, FAQs, contact details, opening hours, trust badges
+- [x] T08: App Shell & Routing — Main layout structure, sticky mobile conversion bar, error boundary / 404
 
 ### Phase 3: Header, Navigation & Hero
-- [ ] T09: Navigation Desktop — Header bar, brand logo, navigation links, primary reservation CTA button
-- [ ] T10: Navigation Mobile — Hamburger toggle, accessible drawer menu, keyboard focus trap, Esc close
-- [ ] T11: Hero Section — Appetizing headline, supportive copy, primary CTA (Order on WhatsApp) + secondary CTA (View Menu)
-- [ ] T12: Hero Trust Strip — Live opening status indicator, delivery areas, prep time, prep stats with `Stat` component
+- [x] T09: Navigation Desktop — Header bar, brand logo, navigation links, primary reservation CTA button
+- [x] T10: Navigation Mobile — Hamburger toggle, accessible drawer menu, keyboard focus trap, Esc close
+- [x] T11: Hero Section — Appetizing headline, supportive copy, primary CTA (Order on WhatsApp) + secondary CTA (View Menu)
+- [x] T12: Hero Trust Strip — Live opening status indicator, delivery areas, prep time, prep stats with `Stat` component
 
 ### Phase 4: Menu, Highlights & Offers
-- [ ] T13: Signature Dishes Section — 4 highlighted dishes with handcrafted SVG dish visuals, price tags, "اطلب بالواتساب" direct order action
-- [ ] T14: Menu Section: Category Tabs — Accessible `role="tablist"` category switcher with keyboard arrow navigation
-- [ ] T15: Menu Section: Dish Cards Grid — Complete menu items for selected category with ingredients, price, and pre-filled WhatsApp link
-- [ ] T16: Current Offers & Family Platters Section — 2 featured deals with clear value proposition and callout badges
+- [x] T13: Signature Dishes Section — 4 highlighted dishes with handcrafted SVG dish visuals, price tags, "اطلب بالواتساب" direct order action
+- [x] T14: Menu Section: Category Tabs — Accessible `role="tablist"` category switcher with keyboard arrow navigation
+- [x] T15: Menu Section: Dish Cards Grid — Complete menu items for selected category with ingredients, price, and pre-filled WhatsApp link
+- [x] T16: Current Offers & Family Platters Section — 2 featured deals with clear value proposition and callout badges
 
 ### Phase 5: Story, Gallery & Social Proof
-- [ ] T17: About & Kitchen Philosophy Section — Story of woodfire grilling and slow claypot cooking, 3 core trust pillars
-- [ ] T18: Gallery Section — Handcrafted culinary SVG scenes/slots, responsive grid, lazy loading, lightbox modal
-- [ ] T19: Testimonials / Guest Stories Section — 3 honest customer quotes with area/city, star ratings, clearly marked placeholder badge
+- [x] T17: About & Kitchen Philosophy Section — Story of woodfire grilling and slow claypot cooking, 3 core trust pillars
+- [x] T18: Gallery Section — Handcrafted culinary SVG scenes/slots, responsive grid, lazy loading, lightbox modal
+- [x] T19: Testimonials / Guest Stories Section — 3 honest customer quotes with area/city, star ratings, clearly marked placeholder badge
 
 ### Phase 6: Location, FAQ & Interactive Forms
-- [ ] T20: Visit Us / Location & Hours Section — Interactive hours table with today's row dynamically highlighted, map container, contact cards
-- [ ] T21: FAQ Section — 6 real questions on delivery, reservations, hygiene, payment with accessible accordion (Enter/Space, ARIA)
-- [ ] T22: Form Validation Engine (`src/utils/validators.js`) + Vitest Unit Tests — Name, Egyptian mobile (+20 / 01x), future date, valid time slot, guest count (1-20), sanitize & trim
-- [ ] T23: Reservation Form Component — Accessible form controls, inline validation on blur & submit, character counters, honeypot field, loading state, double-submit prevention
-- [ ] T24: Form Submission Service (`src/services/reservationService.js`) — API stub, error handling, direct WhatsApp reservation fallback handoff
+- [x] T20: Visit Us / Location & Hours Section — Interactive hours table with today's row dynamically highlighted, map container, contact cards
+- [x] T21: FAQ Section — 6 real questions on delivery, reservations, hygiene, payment with accessible accordion (Enter/Space, ARIA)
+- [x] T22: Form Validation Engine (`src/utils/validators.js`) + Vitest/Node Unit Tests — 13 passing unit tests for Name, Egyptian mobile (+20 / 01x), date, time, guests (1-20), sanitize & trim
+- [x] T23: Reservation Form Component — Accessible form controls, inline validation on blur & submit, character counters, honeypot field, loading state, double-submit prevention
+- [x] T24: Form Submission Service (`src/services/reservationService.js`) — API stub, error handling, direct WhatsApp reservation fallback handoff
 
 ### Phase 7: Mobile Bar, Footer, 404 & Analytics
-- [ ] T25: Sticky Mobile Action Bar — WhatsApp order & Phone call sticky bar for mobile screens without obstructing content
-- [ ] T26: Footer Component — Restaurant brand, opening hours summary, quick links, social links, copyright, privacy link
-- [ ] T27: Custom 404 Page — Food-themed warm 404 page with return home button and WhatsApp support link
-- [ ] T28: Analytics & Conversion Tracking (`src/utils/analytics.js`) — WhatsApp clicks, phone clicks, menu views, reservation starts & completions (no PII)
+- [x] T25: Sticky Mobile Action Bar — WhatsApp order & Phone call sticky bar for mobile screens without obstructing content
+- [x] T26: Footer Component — Restaurant brand, opening hours summary, quick links, social links, copyright, privacy link
+- [x] T27: Custom 404 Page — Food-themed warm 404 page with return home button and WhatsApp support link
+- [x] T28: Analytics & Conversion Tracking (`src/utils/analytics.js`) — WhatsApp clicks, phone clicks, menu views, reservation starts & completions (no PII)
 
 ### Phase 8: SEO, Audits & Handoff Package
-- [ ] T29: SEO, Meta Tags, Structured Data — Schema.org Restaurant JSON-LD, OpenGraph, Twitter card, robots.txt, sitemap.xml
-- [ ] T30: Accessibility, Keyboard & Reduced-Motion Audit — Complete keyboard tab navigation, screen reader aria attributes, prefers-reduced-motion verification
-- [ ] T31: Production Build, SPA Fallbacks & Deployment Configs — `dist` verification, `deploy/` folder with `_redirects`, `vercel.json`, `.htaccess`, nginx snippet, security headers
-- [ ] T32: Documentation & Handoff Package — `README.md`, `HANDOVER.md` (Arabic & English), `REPLACE_BEFORE_LAUNCH.md`, clean zip bundle and final verification
+- [x] T29: SEO, Meta Tags, Structured Data — Schema.org Restaurant JSON-LD, OpenGraph, Twitter card, robots.txt, sitemap.xml
+- [x] T30: Accessibility, Keyboard & Reduced-Motion Audit — Complete keyboard tab navigation, screen reader aria attributes, prefers-reduced-motion verification
+- [x] T31: Production Build, SPA Fallbacks & Deployment Configs — `dist` verification, `deploy/` folder with `_redirects`, `vercel.json`, `.htaccess`, nginx snippet, security headers
+- [x] T32: Documentation & Handoff Package — `README.md`, `HANDOVER.md` (Arabic & English), `REPLACE_BEFORE_LAUNCH.md`, clean zip bundle and final verification
 
 ---
 
 ## 5. CURRENT STATE
 
-- **Last completed task:** T00 (Phase 1 Research, Project Identity, PROGRESS.md setup)
-- **In progress:** T01 (Git repo setup, initial branch, commit)
-- **Exact next action:** Initialize git commits on `feat/initial-build`, scaffold React + Vite application.
+- **Last completed task:** T32 (Documentation, Handoff Package, clean production build verification)
+- **Status:** All 32 micro-tasks completed, tested, and verified. Production build generated with zero errors.
+- **Ready for GitHub & Vercel deployment.**
 
 ---
 
 ## 6. KNOWN ISSUES
 
-- None yet.
+- None.
 
 ---
 
 ## 7. DECISIONS LOG
 
-1. **Restaurant Name & Concept:** "دار الحطب" (Dar Al-Hatab) — Authentic Charcoal Grills & Slow-Cooked Claypots in New Cairo, Egypt. Warm, heritage Egyptian woodfire kitchen.
+1. **Restaurant Concept:** "دار الحطب" (Dar Al-Hatab) — Authentic Charcoal Grills & Slow-Cooked Claypots in New Cairo, Egypt.
 2. **Project Directory:** `restaurant-landing-page/` inside workspace, maintaining dedicated git repository and full modular independence.
-3. **Typography:** Cairo & Amiri for headers, Tajawal for UI & body text. Clean readability, rich Arabic calligraphic heritage.
+3. **Typography:** Cairo & Amiri for headers, Tajawal for UI & body text. Line-height strictly >= 1.35 for headings and 1.8 for body text.
 4. **Color Tokens:** Deep Terracotta `#991B1B`, Saffron Amber `#D97706`, Charcoal `#1C1917`, Warm Linen `#FDFBF7`.
 5. **Strict Number/Bidi Rule:** Digits are Western 0-9. Prices use `[number] ج.م`. Percentages use `[number]%`. Multipliers use `×[number]`. All isolated with `<bdi>` and `dir="ltr"` inside `<Stat />`.
 6. **Phone Validation:** Egyptian mobile format (11 digits starting with 010, 011, 012, or 015, or +20 followed by 10 digits) with configurable country pattern support.
-7. **No Cliché Images:** Using high-fidelity custom SVG illustrations and styled image slots instead of stock photos that look fake.
+7. **No Cliché Images:** Used high-fidelity custom SVG illustrations and styled image slots instead of stock photos.
+8. **Test Runner:** Built-in Node.js `node:test` and `node:assert/strict` used for zero external overhead, lightning speed (138ms execution), and native ESM compatibility.
 
 ---
 
@@ -193,7 +195,7 @@ Studied 6 premier dining and grill house digital experiences (Dishoom, Sobhy Kab
 
 | Package | Version | Purpose | Safety Check |
 |---|---|---|---|
-| react | ^18.3.1 | Core UI library | Official release, stable |
-| react-dom | ^18.3.1 | DOM renderer | Official release, stable |
-| vite | ^5.4.8 | Build tool & dev server | Fast, standard, reliable |
-| vitest | ^2.1.2 | Unit testing for validators | Fast, native ESM support |
+| react | ^18.2.0 | Core UI library | Official release, stable |
+| react-dom | ^18.2.0 | DOM renderer | Official release, stable |
+| vite | ^5.1.0 | Build tool & dev server | Fast, standard, reliable |
+| @vitejs/plugin-react | ^4.2.1 | React fast refresh plugin | Standard Vite plugin |

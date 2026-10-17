@@ -1,0 +1,5 @@
+# robots.txt for Dar Al-Hatab Restaurant
+User-agent: *
+Allow: /
+
+Sitemap: https://daralhatab.com/sitemap.xml
