@@ -2,38 +2,39 @@
   /* ==========================================================================
      Colors - Hearth, Ember & Heritage Palette
      ========================================================================== */
-  --color-primary: #991B1B;        /* Deep Terracotta / Crimson Red */
-  --color-primary-dark: #7F1D1D;   /* Smoldering Embers */
-  --color-primary-light: #B91C1C;  /* Flame Red */
-  --color-primary-tint: #FEF2F2;   /* Soft Rose Tint */
+  --color-primary: #881B1B;        /* Deep Terracotta / Crimson Red */
+  --color-primary-dark: #6B1414;   /* Smoldering Embers */
+  --color-primary-light: #A82424;  /* Flame Red */
+  --color-primary-tint: #FDF2F2;   /* Soft Rose Tint */
 
-  --color-accent: #D97706;         /* Saffron Gold / Charcoal Glow */
-  --color-accent-dark: #B45309;    /* Dark Spice Amber */
-  --color-accent-light: #F59E0B;   /* Radiant Saffron */
+  --color-accent: #C26A08;         /* Saffron Gold / Charcoal Glow */
+  --color-accent-dark: #9A5204;    /* Dark Spice Amber */
+  --color-accent-light: #E08215;   /* Radiant Saffron */
   --color-accent-glow: #FDE68A;    /* Delicate Honey Tint */
 
-  --color-surface: #FDFBF7;        /* Warm Linen / Natural Bone */
+  --color-surface: #FAF7F2;        /* Warm Linen / Natural Stone */
   --color-surface-card: #FFFFFF;   /* Clean White Card */
-  --color-surface-alt: #F5EFE6;    /* Toasted Hearth Oat */
-  --color-surface-dark: #1C1917;   /* Cast Iron Charcoal */
+  --color-surface-alt: #F3ECE1;    /* Toasted Hearth Oat */
+  --color-surface-dark: #161311;   /* Cast Iron Charcoal */
 
   --color-text: #1C1917;           /* Cast Iron Black (WCAG AAA contrast) */
   --color-text-muted: #57534E;     /* Earth Umber (High legibility) */
   --color-text-light: #78716C;     /* Subtle Secondary */
-  --color-text-inverse: #FDFBF7;   /* Inverse Bone Cream */
+  --color-text-inverse: #FAF7F2;   /* Inverse Bone Cream */
 
-  --color-border: #E8E1D5;         /* Subtle Handcrafted Border */
-  --color-border-light: #F3EEE5;   /* Very Light Divider */
+  --color-border: #E5DDCF;         /* Subtle Handcrafted Border */
+  --color-border-light: #EFE8DC;   /* Very Light Divider */
 
   --color-success: #15803D;        /* Forest Olive Green */
   --color-error: #B91C1C;          /* Deep Crimson Alert */
 
   /* Focus ring */
-  --color-focus: #D97706;
+  --color-focus: #C26A08;
 
   /* ==========================================================================
      Typography & Arabic Line-Height Rules
      ========================================================================== */
+  --font-display: 'Amiri', serif;
   --font-heading: 'Cairo', system-ui, -apple-system, sans-serif;
   --font-body: 'Tajawal', system-ui, -apple-system, sans-serif;
 

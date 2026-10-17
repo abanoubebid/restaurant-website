@@ -13,72 +13,108 @@ export default function HeroSection() {
       id="hero"
       className="hero-section"
       style={{
-        paddingTop: 'clamp(var(--space-8), 6vw, var(--space-16))',
-        paddingBottom: 'clamp(var(--space-10), 8vw, var(--space-20))',
+        paddingTop: 'clamp(var(--space-6), 4vw, var(--space-12))',
+        paddingBottom: 'clamp(var(--space-10), 6vw, var(--space-16))',
         position: 'relative',
-        overflow: 'hidden',
         backgroundColor: 'var(--color-surface)',
-        borderBottom: '1px solid var(--color-border-light)'
+        borderBottom: '1px solid var(--color-border)'
       }}
     >
       <div className="container">
+        {/* Editorial Top Eyebrow Strip */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: 'var(--space-3)',
+            marginBottom: 'var(--space-6)',
+            paddingBottom: 'var(--space-3)',
+            borderBottom: '1px solid var(--color-border-light)'
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+            <span
+              style={{
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                backgroundColor: 'var(--color-success)',
+                display: 'inline-block'
+              }}
+              aria-hidden="true"
+            />
+            <span style={{ fontSize: 'var(--text-xs)', fontWeight: '700', color: 'var(--color-text)' }}>
+              الشوايات شغالة حالياً — نستقبلكم يومياً حتى 1:00 صباحاً
+            </span>
+          </div>
+
+          <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)' }}>
+            📍 مجمع ووترواي، شارع التسعين الشمالي، التجمع الخامس
+          </div>
+        </div>
+
+        {/* Asymmetric Editorial Hero Layout */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))',
-            gap: 'clamp(var(--space-8), 5vw, var(--space-16))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 460px), 1fr))',
+            gap: 'clamp(var(--space-8), 5vw, var(--space-12))',
             alignItems: 'center'
           }}
         >
-          {/* Right Column (Text in RTL) */}
+          {/* Text Column */}
           <div style={{ textAlign: 'start' }}>
-            {/* Hearth Badge */}
-            <div
+            <span
               style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 'var(--space-2)',
-                backgroundColor: 'rgba(217, 119, 6, 0.12)',
-                border: '1px solid rgba(217, 119, 6, 0.25)',
+                fontFamily: 'var(--font-display)',
+                fontSize: 'var(--text-xl)',
+                fontStyle: 'italic',
                 color: 'var(--color-accent-dark)',
-                paddingInline: 'var(--space-3)',
-                paddingBlock: 'var(--space-1)',
-                borderRadius: 'var(--radius-full)',
-                fontSize: 'var(--text-sm)',
-                fontWeight: '700',
-                marginBottom: 'var(--space-4)'
+                display: 'block',
+                marginBottom: 'var(--space-2)'
               }}
             >
-              <Icon name="flame" size={16} color="var(--color-accent)" />
-              <span>لحوم بلدية طازجة يومياً وطواجن فخار قناوي</span>
-            </div>
+              مشويات فحم السنديان وطواجن الفخار القناوي
+            </span>
 
-            {/* Main Headline */}
             <h1
               style={{
+                fontFamily: 'var(--font-heading)',
+                fontSize: 'clamp(2.1rem, 3.8vw, 3.6rem)',
+                fontWeight: '900',
                 color: 'var(--color-text)',
+                lineHeight: '1.25',
                 marginBottom: 'var(--space-4)',
-                lineHeight: 'var(--leading-heading-tight)'
+                letterSpacing: 'normal'
               }}
             >
-              طعم البيت المصري على أصوله، <br />
-              <span style={{ color: 'var(--color-primary)' }}>بنَفَس الحطب وريحة الفحم.</span>
+              طعم البيت اللي بيوحشك، <br />
+              <span
+                style={{
+                  color: 'var(--color-primary)',
+                  position: 'relative',
+                  display: 'inline-block'
+                }}
+              >
+                بنَفَس الحطب وريحة الجمر البلدي.
+              </span>
             </h1>
 
-            {/* Supportive Paragraph */}
             <p
               style={{
-                fontSize: 'clamp(1.05rem, 1.4vw, var(--text-lg))',
+                fontSize: 'clamp(1.05rem, 1.25vw, 1.2rem)',
                 lineHeight: 'var(--leading-body)',
                 color: 'var(--color-text-muted)',
                 marginBottom: 'var(--space-8)',
-                maxWidth: '560px'
+                maxWidth: '540px'
               }}
             >
-              في دار الحطب لا نستخدم لحوماً مجمدة ولا ملينات صناعية. كباب وكفتة وريش ضاني مشوية على فحم الخشب الطبيعي، وطواجن فخار تُسوى لساعات على نار هادئة لتذوق أشهى لقمة في القاهرة الجديدة.
+              مفيش لحمة مجمدة بتدخل مطبخنا، ومفيش فول صويا أو ملينات في الكفتة. لحوم بلدية طازجة من مزارعنا بتدبح يومياً، وتتشوي أمامك على فحم الحطب مع عيش بلدي ملهلب من الفرن وطواجن فخار بتفرول في إيدك.
             </p>
 
-            {/* Dual Conversion CTAs */}
+            {/* Direct Conversion Actions */}
             <div
               style={{
                 display: 'flex',
@@ -97,8 +133,13 @@ export default function HeroSection() {
                 size="lg"
                 icon={<Icon name="whatsapp" size={20} />}
                 onClick={() => trackEvent('whatsapp_click', { location: 'hero_primary' })}
+                style={{
+                  backgroundColor: 'var(--color-accent-dark)',
+                  color: 'var(--color-text-inverse)',
+                  boxShadow: '0 4px 14px rgba(194, 106, 8, 0.3)'
+                }}
               >
-                اطلب الآن عبر واتساب
+                اطلب وجبتك ساخنة عبر واتساب
               </Button>
 
               <Button
@@ -109,23 +150,27 @@ export default function HeroSection() {
                 withArrow
                 onClick={() => trackEvent('cta_click', { location: 'hero_view_menu' })}
               >
-                تصفح قائمة الطعام
+                استكشف قائمة الطعام
               </Button>
             </div>
 
-            {/* Micro Delivery Note */}
+            {/* Live Prep Note */}
             <div
               style={{
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
                 gap: 'var(--space-2)',
-                fontSize: 'var(--text-sm)',
-                color: 'var(--color-text-light)'
+                fontSize: 'var(--text-xs)',
+                color: 'var(--color-text-muted)',
+                backgroundColor: 'var(--color-surface-alt)',
+                padding: 'var(--space-2) var(--space-3)',
+                borderRadius: 'var(--radius-md)',
+                border: '1px solid var(--color-border)'
               }}
             >
-              <Icon name="clock" size={16} color="var(--color-accent-dark)" />
+              <Icon name="clock" size={15} color="var(--color-primary)" />
               <span>
-                توصيل ساخن وسريع لجميع أنحاء التجمع الخامس والرحاب خلال{' '}
+                توصيل حراري لجميع أحياء التجمع والرحاب ومدينتي خلال{' '}
                 <strong style={{ color: 'var(--color-text)' }}>
                   {restaurantConfig.serviceStats.prepTime}
                 </strong>
@@ -133,253 +178,149 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Left Column (Visual Card in RTL) */}
-          <div
-            style={{
-              position: 'relative',
-              display: 'flex',
-              justifyContent: 'center'
-            }}
-          >
-            {/* Handcrafted Culinary Showcase Artwork */}
+          {/* Visual Showcase: Real Editorial Food Photography */}
+          <div style={{ position: 'relative' }}>
             <div
               style={{
-                width: '100%',
-                maxWidth: '480px',
+                position: 'relative',
                 borderRadius: 'var(--radius-xl)',
-                backgroundColor: 'var(--color-surface-card)',
-                border: '1.5px solid var(--color-border)',
-                padding: 'var(--space-6)',
+                overflow: 'hidden',
                 boxShadow: 'var(--shadow-xl)',
-                position: 'relative'
+                border: '2px solid var(--color-border)',
+                backgroundColor: 'var(--color-surface-dark)'
               }}
             >
-              {/* Artisanal Claypot & Hearth SVG Scene */}
-              <div
+              <img
+                src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=85"
+                alt="شواء أسياخ الكباب والكفتة والريش على فحم الحطب في دار الحطب"
+                width="1000"
+                height="750"
+                loading="eager"
                 style={{
                   width: '100%',
                   aspectRatio: '4 / 3',
-                  backgroundColor: 'var(--color-surface-alt)',
-                  borderRadius: 'var(--radius-lg)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  border: '1px solid var(--color-border-light)'
+                  objectFit: 'cover',
+                  display: 'block'
                 }}
-              >
-                <svg
-                  viewBox="0 0 400 300"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  style={{ width: '90%', height: '90%' }}
-                  aria-label="رسم توضيحي لطاجن فخار قناوي على نار الحطب والفحم"
-                  role="img"
-                >
-                  {/* Subtle Hearth Embers Glow */}
-                  <circle cx="200" cy="220" r="120" fill="url(#emberGradient)" opacity="0.4" />
-                  
-                  {/* Charred Wood Logs */}
-                  <rect x="90" y="235" width="220" height="18" rx="9" fill="#3E2723" transform="rotate(-3 200 240)" />
-                  <rect x="110" y="245" width="190" height="16" rx="8" fill="#2E1C14" transform="rotate(2 200 250)" />
-                  
-                  {/* Rising Fire & Glowing Embers */}
-                  <path d="M160 235 Q 170 190 185 210 Q 195 170 205 215 Q 220 180 230 235 Z" fill="#D97706" opacity="0.8" />
-                  <path d="M175 235 Q 185 205 195 220 Q 205 195 215 235 Z" fill="#F59E0B" />
-                  <circle cx="165" cy="180" r="3" fill="#FDE68A" />
-                  <circle cx="235" cy="175" r="2.5" fill="#FDE68A" />
-                  <circle cx="200" cy="160" r="2" fill="#D97706" />
+              />
 
-                  {/* Authentic Qenawi Claypot (طاجن فخار) */}
-                  <ellipse cx="200" cy="195" rx="90" ry="16" fill="#78350F" opacity="0.3" />
-                  <path
-                    d="M130 145 C120 185, 140 215, 200 215 C260 215, 280 185, 270 145 Z"
-                    fill="#9A3412"
-                    stroke="#7C2D12"
-                    strokeWidth="3"
-                  />
-                  {/* Rim of Claypot */}
-                  <ellipse cx="200" cy="145" rx="72" ry="14" fill="#C2410C" stroke="#7C2D12" strokeWidth="2.5" />
-                  <ellipse cx="200" cy="145" rx="60" ry="9" fill="#7C2D12" />
-
-                  {/* Rich Bubbling Stew with Meat & Herbs */}
-                  <ellipse cx="200" cy="144" rx="55" ry="7" fill="#B91C1C" />
-                  <circle cx="185" cy="144" r="5" fill="#D97706" />
-                  <circle cx="210" cy="143" r="6" fill="#78350F" />
-                  <circle cx="195" cy="145" r="3" fill="#15803D" />
-
-                  {/* Rising Aromatic Steam Waves */}
-                  <path
-                    d="M175 125 C 165 105, 185 85, 175 65"
-                    stroke="#D97706"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    opacity="0.6"
-                  />
-                  <path
-                    d="M200 120 C 210 95, 190 75, 205 50"
-                    stroke="#B45309"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    opacity="0.7"
-                  />
-                  <path
-                    d="M225 125 C 235 105, 215 85, 225 65"
-                    stroke="#D97706"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    opacity="0.6"
-                  />
-
-                  <defs>
-                    <radialGradient id="emberGradient" cx="50%" cy="50%" r="50%">
-                      <stop offset="0%" stopColor="#D97706" stopOpacity="0.8" />
-                      <stop offset="100%" stopColor="#991B1B" stopOpacity="0" />
-                    </radialGradient>
-                  </defs>
-                </svg>
-              </div>
-
-              {/* Dish Feature Badge Overlay */}
+              {/* Editorial Caption Tag */}
               <div
                 style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  insetInline: 0,
+                  padding: 'var(--space-4) var(--space-6)',
+                  background: 'linear-gradient(to top, rgba(22, 19, 17, 0.95) 0%, rgba(22, 19, 17, 0.6) 70%, transparent 100%)',
+                  color: 'var(--color-text-inverse)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  marginTop: 'var(--space-4)',
-                  paddingTop: 'var(--space-3)',
-                  borderTop: '1px solid var(--color-border-light)'
+                  gap: 'var(--space-4)'
                 }}
               >
                 <div>
-                  <h3 style={{ fontSize: 'var(--text-base)', fontWeight: '700', color: 'var(--color-text)' }}>
-                    طاجن الموزة بالعكاوي الفخاري
-                  </h3>
-                  <span style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)' }}>
-                    طهي بطيء 4 ساعات على فحم السنديان
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-heading)',
+                      fontSize: 'var(--text-base)',
+                      fontWeight: '800',
+                      color: 'var(--color-accent-glow)',
+                      display: 'block'
+                    }}
+                  >
+                    صينية المشكل الملكية على جمر الحطب
+                  </span>
+                  <span style={{ fontSize: 'var(--text-xs)', color: 'rgba(250, 247, 242, 0.85)' }}>
+                    كباب بتلو، كفتة ضاني، ريش، وأرز مصري بالمكسرات
                   </span>
                 </div>
+
                 <div style={{ textAlign: 'end' }}>
-                  <Stat value="340" suffix="ج.م" size="md" variant="default" />
+                  <Stat value="680" suffix="ج.م" size="md" variant="accent" />
                 </div>
               </div>
+            </div>
+
+            {/* Tactile Stamp Badge (Physical Restaurant Detail) */}
+            <div
+              style={{
+                position: 'absolute',
+                top: '-16px',
+                insetInlineEnd: '-16px',
+                width: '84px',
+                height: '84px',
+                borderRadius: '50%',
+                backgroundColor: 'var(--color-primary)',
+                color: 'var(--color-text-inverse)',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: 'var(--shadow-lg)',
+                border: '3px solid var(--color-surface)',
+                transform: 'rotate(12deg)',
+                textAlign: 'center'
+              }}
+            >
+              <span style={{ fontSize: '9px', fontWeight: '800', letterSpacing: '0.5px' }}>ذبائح بلدية</span>
+              <span style={{ fontFamily: 'var(--font-heading)', fontSize: '13px', fontWeight: '900', lineHeight: 1 }}>100%</span>
+              <span style={{ fontSize: '9px', fontWeight: '700' }}>طازجة يومياً</span>
             </div>
           </div>
         </div>
 
-        {/* Hero Trust Strip (Section 2 - Facts & Proof) */}
+        {/* Hearth Metrics Strip (Tactile Editorial Numbers) */}
         <div
-          className="hero-trust-strip"
           style={{
-            marginTop: 'clamp(var(--space-10), 6vw, var(--space-16))',
+            marginTop: 'clamp(var(--space-8), 5vw, var(--space-12))',
             backgroundColor: 'var(--color-surface-card)',
             border: '1px solid var(--color-border)',
-            borderRadius: 'var(--radius-xl)',
-            padding: 'var(--space-6) var(--space-8)',
-            boxShadow: 'var(--shadow-md)',
+            borderRadius: 'var(--radius-lg)',
+            padding: 'var(--space-5) var(--space-6)',
+            boxShadow: 'var(--shadow-sm)',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: 'var(--space-6)',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+            gap: 'var(--space-4)',
             alignItems: 'center'
           }}
         >
-          {/* Trust 1: Meat Purity */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-            <div
-              style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: 'var(--radius-md)',
-                backgroundColor: 'rgba(153, 27, 27, 0.08)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'var(--color-primary)',
-                flexShrink: 0
-              }}
-            >
-              <Icon name="meat" size={24} />
-            </div>
+            <Icon name="meat" size={26} color="var(--color-primary)" />
             <div>
               <Stat value="100" suffix="%" size="md" variant="default" />
-              <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', marginTop: '2px' }}>
-                لحوم بلدية طازجة ومضمونة
+              <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)' }}>
+                لحوم بلدية بدون مجمدات
               </div>
             </div>
           </div>
 
-          {/* Trust 2: Experience / Heritage */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-            <div
-              style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: 'var(--radius-md)',
-                backgroundColor: 'rgba(217, 119, 6, 0.1)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'var(--color-accent-dark)',
-                flexShrink: 0
-              }}
-            >
-              <Icon name="flame" size={24} />
-            </div>
+            <Icon name="flame" size={26} color="var(--color-accent-dark)" />
             <div>
               <Stat value="15" prefix="+" size="md" variant="accent" />
-              <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', marginTop: '2px' }}>
-                عاماً من الشواء والفخار الأصيل
+              <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)' }}>
+                عاماً من الصنعة وشواء الفحم
               </div>
             </div>
           </div>
 
-          {/* Trust 3: Menu Varieties */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-            <div
-              style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: 'var(--radius-md)',
-                backgroundColor: 'rgba(21, 128, 61, 0.08)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'var(--color-success)',
-                flexShrink: 0
-              }}
-            >
-              <Icon name="pot" size={24} />
-            </div>
+            <Icon name="pot" size={26} color="var(--color-primary)" />
             <div>
               <Stat value="40" prefix="+" size="md" variant="default" />
-              <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', marginTop: '2px' }}>
-                صنفاً يومياً من المشاوي والطواجن
+              <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)' }}>
+                صنفاً طازجاً يخرج من الفرن يومياً
               </div>
             </div>
           </div>
 
-          {/* Trust 4: Guest Satisfaction */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-            <div
-              style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: 'var(--radius-md)',
-                backgroundColor: 'rgba(217, 119, 6, 0.1)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'var(--color-accent)',
-                flexShrink: 0
-              }}
-            >
-              <Icon name="star" size={24} />
-            </div>
+            <Icon name="star" size={24} color="var(--color-accent)" />
             <div>
               <Stat value="4.9" size="md" variant="accent" />
-              <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', marginTop: '2px' }}>
-                تقييم ضيوفنا الكرام ({restaurantConfig.serviceStats.ratingReviewsCount} تقييم)
+              <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)' }}>
+                تقييم ضيوف الدار بالتجمع ({restaurantConfig.serviceStats.ratingReviewsCount})
               </div>
             </div>
           </div>

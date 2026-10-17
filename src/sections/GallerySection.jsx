@@ -7,7 +7,6 @@ export default function GallerySection() {
   const [activeItem, setActiveItem] = useState(null)
   const closeBtnRef = useRef(null)
 
-  // Handle keyboard navigation inside Lightbox
   useEffect(() => {
     if (!activeItem) return
 
@@ -15,7 +14,6 @@ export default function GallerySection() {
       if (e.key === 'Escape') {
         setActiveItem(null)
       } else if (e.key === 'ArrowLeft') {
-        // In RTL, forward is LEFT
         const currentIndex = galleryItems.findIndex(i => i.id === activeItem.id)
         const nextIndex = (currentIndex + 1) % galleryItems.length
         setActiveItem(galleryItems[nextIndex])
@@ -40,12 +38,12 @@ export default function GallerySection() {
     <section id="gallery" className="section" style={{ backgroundColor: 'var(--color-surface-alt)' }}>
       <div className="container">
         <SectionHeading
-          eyebrow="عدسة دار الحطب"
-          title="أجواء المطبخ وجلسات الدار"
-          subtitle="لقطات حية من شوايات الفحم، أفران الفخار، وأجواء الضيافة التراثية الدافئة."
+          eyebrow="من قلب المطبخ"
+          title="لقطات حية من شوايات وأفران دار الحطب"
+          subtitle="شاهد تفاصيل الشواء على جمر الخشب الطبيعي، والخبز البلدي الطازج على الحجر، وأجواء الدار التراثية الدافئة."
         />
 
-        {/* Gallery Grid */}
+        {/* Gallery Grid with Real Food Photography */}
         <div
           style={{
             display: 'grid',
@@ -62,34 +60,48 @@ export default function GallerySection() {
                 borderRadius: 'var(--radius-lg)',
                 overflow: 'hidden',
                 backgroundColor: 'var(--color-surface-card)',
-                border: '1px solid var(--color-border)',
+                border: '1.5px solid var(--color-border)',
                 cursor: 'pointer',
                 textAlign: 'start',
                 display: 'flex',
                 flexDirection: 'column',
                 transition: 'transform var(--transition-fast), box-shadow var(--transition-fast)',
-                outline: 'none'
+                outline: 'none',
+                boxShadow: 'var(--shadow-sm)'
               }}
               className="gallery-card"
             >
-              {/* Handcrafted Graphic / SVG Placeholder Slot */}
               <div
                 style={{
                   width: '100%',
-                  aspectRatio: item.aspect === 'wide' ? '16 / 9' : '4 / 3',
+                  aspectRatio: item.aspect === 'wide' ? '16 / 10' : '4 / 3',
+                  position: 'relative',
                   backgroundColor: 'var(--color-surface-dark)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  position: 'relative'
+                  overflow: 'hidden'
                 }}
               >
-                <div
+                <img
+                  src={item.imageUrl}
+                  alt={item.title}
+                  width="600"
+                  height="400"
+                  loading="lazy"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    display: 'block',
+                    transition: 'transform var(--transition-normal)'
+                  }}
+                  className="gallery-img"
+                />
+
+                <span
                   style={{
                     position: 'absolute',
                     top: 'var(--space-3)',
                     insetInlineStart: 'var(--space-3)',
-                    backgroundColor: 'rgba(28, 25, 23, 0.75)',
+                    backgroundColor: 'rgba(22, 19, 17, 0.85)',
                     color: 'var(--color-accent-glow)',
                     fontSize: 'var(--text-xs)',
                     fontWeight: '700',
@@ -99,20 +111,12 @@ export default function GallerySection() {
                   }}
                 >
                   {item.category}
-                </div>
-
-                <div style={{ textAlign: 'center', color: 'var(--color-accent-glow)' }}>
-                  <Icon name="flame" size={36} color="var(--color-accent)" />
-                  <div style={{ fontSize: 'var(--text-xs)', marginTop: 'var(--space-2)', color: 'rgba(253, 251, 247, 0.7)' }}>
-                    انقر لتكبير المشهد
-                  </div>
-                </div>
+                </span>
               </div>
 
-              {/* Title Strip */}
               <div
                 style={{
-                  padding: 'var(--space-4)',
+                  padding: 'var(--space-3-5, 14px) var(--space-4)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between'
@@ -121,15 +125,15 @@ export default function GallerySection() {
                 <span
                   style={{
                     fontFamily: 'var(--font-heading)',
-                    fontSize: 'var(--text-base)',
+                    fontSize: 'var(--text-sm)',
                     fontWeight: '700',
                     color: 'var(--color-text)'
                   }}
                 >
                   {item.title}
                 </span>
-                <span style={{ color: 'var(--color-accent-dark)', fontSize: 'var(--text-sm)' }}>
-                  🔍
+                <span style={{ color: 'var(--color-accent-dark)', fontSize: 'var(--text-xs)', fontWeight: '700' }}>
+                  تكبير ↗
                 </span>
               </div>
             </button>
@@ -146,7 +150,7 @@ export default function GallerySection() {
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundColor: 'rgba(28, 25, 23, 0.92)',
+            backgroundColor: 'rgba(22, 19, 17, 0.95)',
             zIndex: 'var(--z-modal)',
             display: 'flex',
             alignItems: 'center',
@@ -161,14 +165,13 @@ export default function GallerySection() {
             style={{
               backgroundColor: 'var(--color-surface)',
               borderRadius: 'var(--radius-xl)',
-              maxWidth: '640px',
+              maxWidth: '780px',
               width: '100%',
               overflow: 'hidden',
               boxShadow: 'var(--shadow-xl)',
               position: 'relative'
             }}
           >
-            {/* Modal Header */}
             <div
               style={{
                 display: 'flex',
@@ -209,27 +212,20 @@ export default function GallerySection() {
               </button>
             </div>
 
-            {/* Modal Body Graphic */}
-            <div
-              style={{
-                padding: 'var(--space-8)',
-                backgroundColor: 'var(--color-surface-dark)',
-                color: 'var(--color-text-inverse)',
-                textAlign: 'center',
-                aspectRatio: '16 / 10',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
-              <Icon name="pot" size={54} color="var(--color-accent)" />
-              <p style={{ marginTop: 'var(--space-4)', color: 'rgba(253, 251, 247, 0.9)', maxWidth: '440px' }}>
-                مساحة مخصصة للصور الحقيقية عالية الدقة من مطبخ دار الحطب. (يمكن استبدالها بصور المطعم الواقعية عبر مجلد الصور).
-              </p>
+            <div style={{ backgroundColor: 'var(--color-surface-dark)' }}>
+              <img
+                src={activeItem.imageUrl}
+                alt={activeItem.title}
+                style={{
+                  width: '100%',
+                  maxHeight: '65vh',
+                  objectFit: 'contain',
+                  display: 'block',
+                  margin: '0 auto'
+                }}
+              />
             </div>
 
-            {/* Modal Footer Controls */}
             <div
               style={{
                 padding: 'var(--space-3) var(--space-6)',
@@ -240,12 +236,18 @@ export default function GallerySection() {
                 color: 'var(--color-text-muted)'
               }}
             >
-              <span>استخدم الأسهم (← / →) للتنقل، أو زر Esc للإغلاق</span>
-              <span>دار الحطب ©</span>
+              <span>تنقل بالأسهم (← / →)، واضغط Esc للإغلاق</span>
+              <span>دار الحطب — مطبخ على أصوله</span>
             </div>
           </div>
         </div>
       )}
+
+      <style>{`
+        .gallery-card:hover .gallery-img {
+          transform: scale(1.04);
+        }
+      `}</style>
     </section>
   )
 }

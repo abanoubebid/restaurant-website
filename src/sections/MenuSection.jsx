@@ -37,7 +37,7 @@ export default function MenuSection() {
   const currentItems = menuData.items[activeCategory] || []
 
   const getDishWhatsAppUrl = (dishName) => {
-    const text = `السلام عليكم، أود طلب: ${dishName} من قائمة دار الحطب.`
+    const text = `مساء الخير، حابب أطلب صنف: ${dishName} من قائمة دار الحطب.`
     return `https://wa.me/${restaurantConfig.contact.whatsapp}?text=${encodeURIComponent(text)}`
   }
 
@@ -45,9 +45,9 @@ export default function MenuSection() {
     <section id="menu" className="section" style={{ backgroundColor: 'var(--color-surface)' }}>
       <div className="container">
         <SectionHeading
-          eyebrow="قائمة طعام دار الحطب"
-          title="أصنافنا المطهوة بحرفية وشغف"
-          subtitle="تصفح جميع أقسام قائمتنا، من مشاوي الفحم والطواجن الفخارية إلى المقبلات التراثية والحلويات والمشروبات الطبيعية."
+          eyebrow="قائمة الأكلات والطلبات"
+          title="كل صنف بيخرج طازج من شوايتنا وفرننا الحجر"
+          subtitle="اختر ما تشتهيه من مشاوي الفحم البلدي، طواجن الفخار القناوي، والشوربات الساخنة مع إمكانية الطلب المباشر بنقرة واحدة."
         />
 
         {/* Accessible Category Tablist */}
