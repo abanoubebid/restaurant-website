@@ -1,0 +1,209 @@
+/* ==========================================================================
+   CSS Reset & Native RTL Foundation
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  text-align: start;
+  direction: rtl;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   Accessible Skip Link
+   ========================================================================== */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  inset-inline-start: var(--space-4);
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  z-index: 9999;
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Focus & Keyboard Accessibility
+   ========================================================================== */
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   Typography Rules (Strict Arabic Standards)
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  font-weight: 700;
+  line-height: var(--leading-heading);
+  letter-spacing: normal; /* STRICT: No letter-spacing on Arabic script */
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw + 1rem, var(--text-5xl));
+  line-height: var(--leading-heading-tight);
+}
+
+h2 {
+  font-size: clamp(1.6rem, 2.5vw + 1rem, var(--text-4xl));
+  line-height: var(--leading-heading-tight);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 1.5vw + 0.75rem, var(--text-2xl));
+  line-height: var(--leading-heading);
+}
+
+h4 {
+  font-size: var(--text-xl);
+  line-height: var(--leading-heading);
+}
+
+p {
+  line-height: var(--leading-body);
+  color: var(--color-text-muted);
+}
+
+/* Ensure no broken letter connections or accidental letter-spacing */
+*, *::before, *::after {
+  letter-spacing: normal !important;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+/* Media Elements */
+img, svg, picture, video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Form Controls Reset */
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+}
+
+button {
+  cursor: pointer;
+  user-select: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Container & Layout Utilities */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: var(--space-8);
+  }
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+/* Section Spacing */
+.section {
+  padding-block: var(--space-12);
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: var(--space-16);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-block: var(--space-20);
+  }
+}
+
+/* Visually Hidden Utility for Screen Readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   Prefers Reduced Motion (Strict Accessibility Rule)
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

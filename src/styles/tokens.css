@@ -1,0 +1,113 @@
+:root {
+  /* ==========================================================================
+     Colors - Hearth, Ember & Heritage Palette
+     ========================================================================== */
+  --color-primary: #991B1B;        /* Deep Terracotta / Crimson Red */
+  --color-primary-dark: #7F1D1D;   /* Smoldering Embers */
+  --color-primary-light: #B91C1C;  /* Flame Red */
+  --color-primary-tint: #FEF2F2;   /* Soft Rose Tint */
+
+  --color-accent: #D97706;         /* Saffron Gold / Charcoal Glow */
+  --color-accent-dark: #B45309;    /* Dark Spice Amber */
+  --color-accent-light: #F59E0B;   /* Radiant Saffron */
+  --color-accent-glow: #FDE68A;    /* Delicate Honey Tint */
+
+  --color-surface: #FDFBF7;        /* Warm Linen / Natural Bone */
+  --color-surface-card: #FFFFFF;   /* Clean White Card */
+  --color-surface-alt: #F5EFE6;    /* Toasted Hearth Oat */
+  --color-surface-dark: #1C1917;   /* Cast Iron Charcoal */
+
+  --color-text: #1C1917;           /* Cast Iron Black (WCAG AAA contrast) */
+  --color-text-muted: #57534E;     /* Earth Umber (High legibility) */
+  --color-text-light: #78716C;     /* Subtle Secondary */
+  --color-text-inverse: #FDFBF7;   /* Inverse Bone Cream */
+
+  --color-border: #E8E1D5;         /* Subtle Handcrafted Border */
+  --color-border-light: #F3EEE5;   /* Very Light Divider */
+
+  --color-success: #15803D;        /* Forest Olive Green */
+  --color-error: #B91C1C;          /* Deep Crimson Alert */
+
+  /* Focus ring */
+  --color-focus: #D97706;
+
+  /* ==========================================================================
+     Typography & Arabic Line-Height Rules
+     ========================================================================== */
+  --font-heading: 'Cairo', system-ui, -apple-system, sans-serif;
+  --font-body: 'Tajawal', system-ui, -apple-system, sans-serif;
+
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.875rem;   /* 14px */
+  --text-base: 1rem;     /* 16px */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.25rem;    /* 20px */
+  --text-2xl: 1.5rem;    /* 24px */
+  --text-3xl: 1.875rem;  /* 30px */
+  --text-4xl: 2.25rem;   /* 36px */
+  --text-5xl: 3rem;      /* 48px */
+  --text-6xl: 3.75rem;   /* 60px */
+
+  /* Safe Arabic Line Heights (Strict Rule: never below 1.35 for headings, 1.8 for body) */
+  --leading-heading-tight: 1.35;
+  --leading-heading: 1.45;
+  --leading-body: 1.8;
+  --leading-small: 1.7;
+
+  /* ==========================================================================
+     Spacing Scale (4px / 8px Grid)
+     ========================================================================== */
+  --space-0-5: 0.125rem; /* 2px */
+  --space-1: 0.25rem;    /* 4px */
+  --space-2: 0.5rem;     /* 8px */
+  --space-3: 0.75rem;    /* 12px */
+  --space-4: 1rem;       /* 16px */
+  --space-5: 1.25rem;    /* 20px */
+  --space-6: 1.5rem;     /* 24px */
+  --space-8: 2rem;       /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-20: 5rem;      /* 80px */
+  --space-24: 6rem;      /* 96px */
+
+  /* Max Widths */
+  --container-max: 1200px;
+  --container-narrow: 840px;
+
+  /* ==========================================================================
+     Radii
+     ========================================================================== */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* ==========================================================================
+     Elevation & Shadows (Soft warm ambient)
+     ========================================================================== */
+  --shadow-sm: 0 1px 3px rgba(28, 25, 23, 0.05);
+  --shadow-md: 0 4px 10px -2px rgba(28, 25, 23, 0.06), 0 2px 4px -2px rgba(28, 25, 23, 0.03);
+  --shadow-lg: 0 12px 24px -4px rgba(28, 25, 23, 0.08), 0 4px 8px -4px rgba(28, 25, 23, 0.04);
+  --shadow-xl: 0 24px 38px -6px rgba(28, 25, 23, 0.12), 0 8px 12px -6px rgba(28, 25, 23, 0.05);
+
+  /* ==========================================================================
+     Z-Index Hierarchy
+     ========================================================================== */
+  --z-base: 1;
+  --z-elevated: 10;
+  --z-sticky-bar: 90;
+  --z-header: 100;
+  --z-backdrop: 200;
+  --z-drawer: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+
+  /* ==========================================================================
+     Transitions & Motion
+     ========================================================================== */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
