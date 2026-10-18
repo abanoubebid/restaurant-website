@@ -12,7 +12,7 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100%;
   width: 100%;
 }
@@ -25,7 +25,7 @@ body {
   background-color: var(--color-surface);
   text-align: start;
   direction: rtl;
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100%;
   width: 100%;
   position: relative;
@@ -36,7 +36,6 @@ body {
 .app-shell {
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
   position: relative;
 }
 

@@ -70,67 +70,97 @@ export default function LocationSection() {
               </span>
             </div>
 
-            {/* Operating Hours Table */}
-            <div style={{ overflowX: 'auto' }}>
-              <table
-                style={{
-                  width: '100%',
-                  borderCollapse: 'collapse',
-                  fontSize: 'var(--text-sm)',
-                  textAlign: 'start'
-                }}
-              >
-                <tbody>
-                  {restaurantConfig.openingHours.map((row) => {
-                    const isToday = row.dayKey === currentDayIndex
-                    return (
-                      <tr
-                        key={row.day}
+            {/* Operating Hours List with Pristine RTL Grid & Tabular Alignment */}
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '2px'
+              }}
+            >
+              {restaurantConfig.openingHours.map((row) => {
+                const isToday = row.dayKey === currentDayIndex
+                return (
+                  <div
+                    key={row.day}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      padding: '10px 12px',
+                      backgroundColor: isToday ? 'rgba(217, 119, 6, 0.08)' : 'transparent',
+                      borderBottom: '1px solid var(--color-border-light)',
+                      borderRadius: isToday ? 'var(--radius-md)' : '0',
+                      transition: 'background-color var(--transition-fast)'
+                    }}
+                  >
+                    {/* Day Name & Today Indicator */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <span
                         style={{
-                          backgroundColor: isToday ? 'rgba(217, 119, 6, 0.08)' : 'transparent',
-                          fontWeight: isToday ? '700' : '500',
-                          color: isToday ? 'var(--color-text)' : 'var(--color-text-muted)',
-                          borderBottom: '1px solid var(--color-border-light)',
-                          transition: 'background-color var(--transition-fast)'
+                          fontFamily: 'var(--font-heading)',
+                          fontSize: 'var(--text-sm)',
+                          fontWeight: isToday ? '800' : '600',
+                          color: isToday ? 'var(--color-primary)' : 'var(--color-text)'
                         }}
                       >
-                        <td
+                        {row.day}
+                      </span>
+                      {isToday && (
+                        <span
                           style={{
-                            padding: 'var(--space-2-5, 10px) var(--space-3)',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: 'var(--space-2)'
+                            fontSize: '0.68rem',
+                            fontWeight: '700',
+                            backgroundColor: 'var(--color-accent)',
+                            color: 'var(--color-text-inverse)',
+                            padding: '1px 6px',
+                            borderRadius: 'var(--radius-sm)'
                           }}
                         >
-                          <span>{row.day}</span>
-                          {isToday && (
-                            <span
-                              style={{
-                                fontSize: 'var(--text-xs)',
-                                backgroundColor: 'var(--color-accent)',
-                                color: 'var(--color-text-inverse)',
-                                padding: '1px 6px',
-                                borderRadius: 'var(--radius-sm)',
-                                fontWeight: '700'
-                              }}
-                            >
-                              اليوم
-                            </span>
-                          )}
-                        </td>
-                        <td
+                          اليوم
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Uniform Hours Format in Native RTL Flow */}
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        direction: 'rtl'
+                      }}
+                    >
+                      {row.note && (
+                        <span
                           style={{
-                            padding: 'var(--space-2-5, 10px) var(--space-3)',
-                            textAlign: 'end'
+                            fontSize: '0.68rem',
+                            fontWeight: '700',
+                            color: 'var(--color-accent-dark)',
+                            backgroundColor: 'rgba(217, 119, 6, 0.1)',
+                            padding: '2px 7px',
+                            borderRadius: '4px'
                           }}
                         >
-                          <bdi dir="ltr">{row.text}</bdi>
-                        </td>
-                      </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
+                          {row.note}
+                        </span>
+                      )}
+                      <span
+                        style={{
+                          fontFamily: 'var(--font-heading)',
+                          fontSize: 'var(--text-sm)',
+                          fontWeight: isToday ? '700' : '500',
+                          color: isToday ? 'var(--color-text)' : 'var(--color-text-muted)',
+                          whiteSpace: 'nowrap',
+                          direction: 'rtl'
+                        }}
+                      >
+                        من <bdi dir="ltr">{row.openTime}</bdi> {row.openPeriod} حتى <bdi dir="ltr">{row.closeTime}</bdi> {row.closePeriod}
+                      </span>
+                    </div>
+                  </div>
+                )
+              })}
             </div>
 
             {/* Direct Address & Google Maps Action */}

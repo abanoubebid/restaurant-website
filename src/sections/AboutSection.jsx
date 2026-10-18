@@ -102,7 +102,7 @@ export default function AboutSection() {
             >
               <img
                 src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80"
-                alt="طهي طواجن الفخار القناوي على نار هادئة لساعات في دار الحطب"
+                alt="شواء اللحوم والريش الضاني على فحم الحطب الطبيعي في مطبخ دار الحطب"
                 width="900"
                 height="600"
                 loading="lazy"

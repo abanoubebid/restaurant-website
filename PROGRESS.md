@@ -51,6 +51,24 @@ A professional, modern, fully responsive landing page (single page) for a restau
    - جعل حشو البطاقات `Card` متجاوباً بديناميكية `clamp` لتوفير 32px من العرض الداخلي للموبايل.
    - فرض قيود العرض `max-width: 100%; overflow-x: hidden;` على `html` و `body` مع مسافة أمان سفلية (74px) للشريط الثابت.
 
+8. **تثبيت الهدر الدائم ومنع اختفائه عند التمرير وملاءمة شاشات الموبايل الضيقة (320px):**
+   - تحويل الهدر من `position: sticky` إلى `position: fixed` بالكامل مع مسار علوي وسفلي ثابت وإضافة عنصر حشو بديل `.site-header-spacer` بارتفاع يمنع حجب أي محتوى.
+   - إزالة `overflow-x: hidden` من حاوية التطبيق `.app-shell` واستخدام `overflow-x: clip` على `html, body` لمنع تعطل مواضع التثبيت الرأسي في المتصفحات.
+   - إلغاء الشريط العلوي للهدر تماماً على الموبايل الأصغر من 992px ليصبح الهدر بارتفاع 60px أنيق وفائق النقاء لا ينكسر ولا يسبب أي تمرير أفقي حتى على شاشات 320px (iPhone SE).
+
+9. **تنسيق مواعيد العمل الأسبوعية ومنع لخبطة الاتجاهات (RTL BiDi Alignment):**
+   - إعادة بناء جدول مواعيد العمل في `LocationSection.jsx` إلى شبكة RTL مرنة (Flexbox) تفصل اسم اليوم وشارات المناسبات عن نطاق الساعات.
+   - حصر وسوم `<bdi dir="ltr">` على الأرقام فقط (`12:00` و `01:00`) مع إبقاء الكلمات العربية (`من` و `حتى` و `ظهراً` و `صباحاً`) في تدفقها الطبيعي RTL لمنع أي تبعثر في السطور.
+
+10. **مطابقة الصور الحقيقية للأكل مع الأوصاف بدقة تامة (Food Photography & Copy Harmonization):**
+    - تصحيح أوصاف وأسماء الأطباق في كل أقسام الموقع لتطابق الصور المعروضة 100%:
+      - صورة أسياخ المشويات والبطاطس صُنفت بدقة كـ «صينية مشكل أسياخ دار الحطب على الجمر».
+      - صورة الريش المشوية على الفحم صُنفت بدقة كـ «ريش ضاني مشوية على فحم الحطب».
+      - صورة الكباب البتلو بالبصل والسماق صُنفت بدقة كـ «كباب بتلو مشوي على سيخ الحطب».
+      - صورة الخبز البلدي بالردة صُنفت كـ «الخبز البلدي الطازج بالردة على الحجر».
+      - تصحيح ترتيب صور العروض في `OffersSection.jsx` ومطابقة صورة كل عرض مع محتواه تماماً.
+      - تحديث النص البديل للصورة في `AboutSection.jsx` ليطابق شواء اللحوم والريش على الفحم الطبيعي.
+
 ---
 
 ## 3. TASK STATUS
@@ -58,6 +76,10 @@ A professional, modern, fully responsive landing page (single page) for a restau
 - [x] All 32 Micro-Tasks completed and verified.
 - [x] Typography, Currency formatting, and Card Alignment refined according to user visual feedback.
 - [x] Header redesigned into a distinctive luxury hearth aesthetic with zero text wrapping.
+- [x] Header permanently fixed across the entire site without disappearing on scroll.
+- [x] Operating hours RTL table aligned and verified without BiDi text scrambling.
+- [x] 100% harmony between food photography and dish descriptions.
+- [x] Build passes cleanly and all 13 automated tests pass.
 - [x] Percentage symbol unified to the left side (`%100`) matching `+15` and `+40`.
 - [x] Full mobile & tablet responsiveness verified with zero horizontal overflow and safe Arabic line-heights.
 - [x] 13 Automated unit tests passing (100%).

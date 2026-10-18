@@ -7,10 +7,10 @@ import Icon from '../components/base/Icon'
 import { trackEvent } from '../utils/analytics'
 
 export default function OffersSection() {
-  // Curated authentic Middle Eastern feast photos (no western burgers or fries)
+  // Curated authentic Middle Eastern feast photos matching the offer titles exactly
   const offerImages = [
-    'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80',
-    'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80'
+    'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80', // صينية أسياخ لِمة العيلة الكبيرة
+    'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80'  // صينية الريش الضاني والمشاوي لشخصين
   ]
 
   const getOfferWhatsAppUrl = (title) => {

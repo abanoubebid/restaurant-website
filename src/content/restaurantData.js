@@ -42,13 +42,13 @@ export const restaurantConfig = {
 
   // Operating Schedule
   openingHours: [
-    { day: 'السبت', dayKey: 6, open: '12:00', close: '01:00', text: '12:00 ظهراً حتى 01:00 صباحاً' },
-    { day: 'الأحد', dayKey: 0, open: '12:00', close: '01:00', text: '12:00 ظهراً حتى 01:00 صباحاً' },
-    { day: 'الإثنين', dayKey: 1, open: '12:00', close: '01:00', text: '12:00 ظهراً حتى 01:00 صباحاً' },
-    { day: 'الثلاثاء', dayKey: 2, open: '12:00', close: '01:00', text: '12:00 ظهراً حتى 01:00 صباحاً' },
-    { day: 'الأربعاء', dayKey: 3, open: '12:00', close: '01:00', text: '12:00 ظهراً حتى 01:00 صباحاً' },
-    { day: 'الخميس', dayKey: 4, open: '12:00', close: '02:00', text: '12:00 ظهراً حتى 02:00 صباحاً (سهرة الويك إند)' },
-    { day: 'الجمعة', dayKey: 5, open: '13:00', close: '02:00', text: '01:00 بعد الصلاة حتى 02:00 صباحاً' }
+    { day: 'السبت', dayKey: 6, openTime: '12:00', openPeriod: 'ظهراً', closeTime: '01:00', closePeriod: 'ص', note: '', text: 'من 12:00 ظهراً حتى 01:00 صباحاً' },
+    { day: 'الأحد', dayKey: 0, openTime: '12:00', openPeriod: 'ظهراً', closeTime: '01:00', closePeriod: 'ص', note: '', text: 'من 12:00 ظهراً حتى 01:00 صباحاً' },
+    { day: 'الإثنين', dayKey: 1, openTime: '12:00', openPeriod: 'ظهراً', closeTime: '01:00', closePeriod: 'ص', note: '', text: 'من 12:00 ظهراً حتى 01:00 صباحاً' },
+    { day: 'الثلاثاء', dayKey: 2, openTime: '12:00', openPeriod: 'ظهراً', closeTime: '01:00', closePeriod: 'ص', note: '', text: 'من 12:00 ظهراً حتى 01:00 صباحاً' },
+    { day: 'الأربعاء', dayKey: 3, openTime: '12:00', openPeriod: 'ظهراً', closeTime: '01:00', closePeriod: 'ص', note: '', text: 'من 12:00 ظهراً حتى 01:00 صباحاً' },
+    { day: 'الخميس', dayKey: 4, openTime: '12:00', openPeriod: 'ظهراً', closeTime: '02:00', closePeriod: 'ص', note: 'سهرة الويك إند', text: 'من 12:00 ظهراً حتى 02:00 صباحاً (سهرة الويك إند)' },
+    { day: 'الجمعة', dayKey: 5, openTime: '01:00', openPeriod: 'ظهراً', closeTime: '02:00', closePeriod: 'ص', note: 'بعد الجمعة', text: 'من 01:00 بعد الصلاة حتى 02:00 صباحاً' }
   ],
 
   // Social Links
@@ -82,14 +82,14 @@ export const navLinks = [
   { id: 'reservation', label: 'حجز طاولة', href: '#reservation' }
 ]
 
-// Signature Dishes (Featured Highlights with Real High-Res Photography)
+// Signature Dishes (Featured Highlights with 100% Photographic Accuracy)
 export const signatureDishes = [
   {
     id: 'sig-1',
-    name: 'صينية مشكل دار الحطب الملكية',
+    name: 'صينية مشكل أسياخ دار الحطب',
     badge: 'الأكثر طلباً في العزائم',
-    tagline: 'كباب بتلو، كفتة ضاني، ريش مشوية، وشيش طاووق على الجمر',
-    description: 'تشكيلة مشويات بلدي صافية تُشوى أمامك على سيخ الحطب وتُقدَم فوق طبقة أرز مصري بالمكسرات المحمصة والزبيب، مع طاجن بامية باللحمة وعيش بلدي ملهلب من الفرن الحجر.',
+    tagline: 'أسياخ كباب ودجاج مشوية على فحم الخشب الطبيعي',
+    description: 'تشكيلة أسياخ مشويات طازجة تُشوى أمامك على فحم الحطب مع البطاطس المشوية بالروزماري وصلصات التغميس البلدي والعيش الساخن من الفرن.',
     price: 680,
     servings: 'تكفي 2 إلى 3 أفراد برضا كامل',
     prepTime: '30 دقيقة',
@@ -98,39 +98,39 @@ export const signatureDishes = [
   },
   {
     id: 'sig-2',
-    name: 'طاجن موزة ضاني بالعكاوي والبصل القاورمة',
-    badge: 'تسوية 4 ساعات على نار هادية',
-    tagline: 'اللحمة بتفرول من أول لمسة معلقة',
-    description: 'موزة ضاني بلدي مع قطع عكاوي طازجة مسواة في فخار قناوي أصلي مقفول بالعجين، يخرج من الفرن ورائحته تملأ المكان بمرق الحبهان والمستكة والبصل المكرمل.',
-    price: 340,
-    servings: 'وجبة فرد مشبعة جداً',
+    name: 'ريش ضاني مشوية على فحم الحطب',
+    badge: 'تسوية بطيئة على نار هادية',
+    tagline: 'اللحمة دايبة في التتبيلة وبتفرول من أول لمسة',
+    description: 'ريش ضاني بلدي مشوية على جمر خشب طبيعي حتى تكتسب نكهة التدخين الغنية وتذوب في الفم مع تتبيلة المستكة والروزماري وعصير الليمون.',
+    price: 460,
+    servings: 'وجبة غنية لشخصين',
     prepTime: '25 دقيقة',
     image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80',
-    category: 'claypots'
+    category: 'grills'
   },
   {
     id: 'sig-3',
-    name: 'كفتة مشوية على سيخ خشب الحطب',
-    badge: 'لحمة بلدي صافية بدون برغل',
-    tagline: 'عصارية وطرية بنكهة فحم السنديان',
-    description: 'مفروم كندوز وضاني طازج مع بشرة لية خفيفة وتتبيلة ماء البصل والفلفل الأسود الحصى. بدون أي فول صويا أو إضافات.. طعم اللحمة الحقيقي فقط.',
-    price: 290,
-    servings: 'نصف كيلو مشبع',
+    name: 'كباب بتلو مشوي على سيخ الحطب',
+    badge: 'لحمة بلدي صافية من مزارعنا',
+    tagline: 'عصاري وطري بنكهة فحم السنديان',
+    description: 'قطع لحم بتلو بلدي متبلة بماء البصل والفلفل الأسود الحصى، مشوية على الفحم وتُقدم مع شرائح البصل بالسماق والبقدونس وعيش الفرن.',
+    price: 380,
+    servings: 'وجبة فرد مشبعة جداً',
     prepTime: '20 دقيقة',
-    image: 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=1200&q=80',
     category: 'grills'
   },
   {
     id: 'sig-4',
-    name: 'طاجن ورق عنب بالكوارع المخلية والمحمرة',
-    badge: 'نكهة مصرية أصيلة',
-    tagline: 'ورق عنب بناتي بدبس الرمان وكوارع مقرمشة',
-    description: 'طبقات ورق عنب طازج متبل بالنعناع والليمون مع قطع كوارع مسلوقة في شوربة المستكة ومحمرة تحت شواية الحطب مع طشة ثوم وكزبرة.',
-    price: 260,
-    servings: 'وجبة فرد غنية',
-    prepTime: '25 دقيقة',
-    image: 'https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=1200&q=80',
-    category: 'claypots'
+    name: 'الخبز البلدي الطازج بالردة على الحجر',
+    badge: 'مخبوز طازج مع كل طلب',
+    tagline: 'مورق وملهلب وريحته ترد الروح',
+    description: 'عيش بلدي مصري أصيل بالردة مخبوز أمامك على الحجر الساخن داخل الفرن، يخرج منتفخاً وساخناً ليرافق كل أطباق المشاوي والطواجن.',
+    price: 35,
+    servings: 'سلة عيش طازجة',
+    prepTime: '10 دقائق',
+    image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=80',
+    category: 'bakery'
   }
 ]
 
@@ -339,9 +339,9 @@ export const menuData = {
 export const restaurantOffers = [
   {
     id: 'offer-1',
-    title: 'صينية لِمة العيلة الكبيرة',
+    title: 'صينية أسياخ لِمة العيلة الكبيرة',
     badge: 'توفير 20% لجمعة الأهل',
-    description: 'كيلو ونصف مشويات مشكلة (كباب، كفتة، ريش، شيش طاووق) + طاجن بامية باللحم الضاني + طاجن ورق عنب + 4 أطباق أرز بسمتي بالمكسرات + تشكيلة طحينة وبابا غنوج وسلطة بلدي وعيش ساخن مجاناً.',
+    description: 'تشكيلة وافرة من أسياخ الكباب البتلو، الكفتة المشوية، والشيش طاووق على الفحم مع البطاطس المشوية وعيش الفرن الساخن وسلطات الدار المشكلة.',
     originalPrice: 1950,
     offerPrice: 1560,
     validUntil: 'مستمر طوال الأسبوع',
@@ -349,9 +349,9 @@ export const restaurantOffers = [
   },
   {
     id: 'offer-2',
-    title: 'صينية الحبايب المزدوجة',
+    title: 'صينية الريش الضاني والمشاوي لشخصين',
     badge: 'الأكثر طلباً لغداء فردين',
-    description: 'نصف كيلو كباب وكفتة مشوية على الفحم + طاجن موزة ضاني بالعكاوي + 2 شوربة كوارع مخلية + 2 طاجن أم علي بالقشطة + مشروبات طبيعية مجانية.',
+    description: 'ريش ضاني بلدي مشوية على فحم الحطب مع أسياخ كباب، سلطة طحينة، بابا غنوج، بطاطس مقرمشة، وعيش بلدي ساخن من الفرن.',
     originalPrice: 940,
     offerPrice: 790,
     validUntil: 'متاحة يومياً من 12 ظهراً حتى 6 مساءً',
@@ -407,8 +407,8 @@ export const testimonialsData = {
       author: 'د. سارة المنياوي',
       location: 'مدينة الرحاب',
       date: 'منذ شهر',
-      dishOrdered: 'طاجن موزة بالعكاوي',
-      comment: 'طاجن الموزة بالعكاوي بياخدك في حتة تانية خالص! اللحمة بتسيب العظم لوحدها، والتوابل رايقة من غير ما تغطي على طعم اللحم البلدي. بقينا نطلب منهم كل جمعة تقريباً.'
+      dishOrdered: 'ريش ضاني مشوية',
+      comment: 'الريش المشوية بتاخدك في حتة تانية خالص! اللحمة بتسيب العظم لوحدها، والتوابل رايقة من غير ما تغطي على طعم اللحم البلدي. بقينا نطلب منهم كل جمعة تقريباً.'
     },
     {
       id: 'test-3',
@@ -425,15 +425,15 @@ export const testimonialsData = {
 export const galleryItems = [
   {
     id: 'gal-1',
-    title: 'شواء الكباب والكفتة على فحم الحطب',
+    title: 'شواء أسياخ الكباب والدجاج على فحم الحطب',
     category: 'مشويات الفحم',
     aspect: 'wide',
     imageUrl: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=80'
   },
   {
     id: 'gal-2',
-    title: 'طاجن الفخار القناوي فور خروجه من الفرن',
-    category: 'طواجن الفخار',
+    title: 'ريش ضاني مشوية على الجمر في مطبخ الدار',
+    category: 'مشويات الفحم',
     aspect: 'square',
     imageUrl: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80'
   },
@@ -453,7 +453,7 @@ export const galleryItems = [
   },
   {
     id: 'gal-5',
-    title: 'طاجن أم علي الذهبي بالقشطة والمكسرات',
+    title: 'حلويات الدار الشرقية بالفستق والمكسرات',
     category: 'حلو الدار',
     aspect: 'square',
     imageUrl: 'https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=800&q=80'
