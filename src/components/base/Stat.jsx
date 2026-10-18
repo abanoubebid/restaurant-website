@@ -1,9 +1,9 @@
 import React from 'react'
 
 /**
- * Shared Stat / Number Component
- * Strictly enforces Unicode BiDi isolation and consistent symbol placement.
- * Ensures numbers, percentages, pluses, multipliers and prices render identically everywhere.
+ * Shared Stat / Price Component
+ * - For Egyptian Currency (ج.م): Renders natively in RTL so the number is on the RIGHT and "ج.م" is on the LEFT (ناحية الشمال).
+ * - For Numbers & Percentages (+15, +40, 100%, 4.9): Strictly isolated with unified symbol placement without accidental spaces.
  */
 export default function Stat({
   value,
@@ -15,15 +15,15 @@ export default function Stat({
   className = '',
   style = {}
 }) {
-  // Normalize 'x' or 'X' to real multiplication sign '×'
   const normalizedPrefix = prefix === 'x' || prefix === 'X' ? '×' : prefix
+  const isCurrency = suffix === 'ج.م' || suffix.includes('ج.م')
 
   // Size styling tokens
   const sizeStyles = {
-    sm: { fontSize: 'var(--text-lg)', fontWeight: '700' },
-    md: { fontSize: 'var(--text-2xl)', fontWeight: '800' },
-    lg: { fontSize: 'var(--text-3xl)', fontWeight: '900' },
-    xl: { fontSize: 'clamp(2rem, 3.5vw, var(--text-5xl))', fontWeight: '900' }
+    sm: { fontSize: 'var(--text-base)', fontWeight: '700' },
+    md: { fontSize: 'var(--text-xl)', fontWeight: '700' },
+    lg: { fontSize: 'var(--text-2xl)', fontWeight: '800' },
+    xl: { fontSize: 'clamp(1.8rem, 3vw, var(--text-4xl))', fontWeight: '800' }
   }
 
   const variantStyles = {
@@ -45,27 +45,53 @@ export default function Stat({
       <span
         style={{
           fontFamily: 'var(--font-heading)',
-          lineHeight: 'var(--leading-heading-tight)',
+          lineHeight: '1.3',
           display: 'inline-flex',
           alignItems: 'baseline',
-          gap: '0.15em',
           ...sizeStyles[size],
           ...variantStyles[variant]
         }}
       >
-        {/* BiDi isolation ensures the prefix/suffix and digits never flip */}
-        <bdi
-          dir="ltr"
-          style={{
-            unicodeBidi: 'isolate',
-            fontVariantNumeric: 'tabular-nums',
-            display: 'inline-block'
-          }}
-        >
-          {normalizedPrefix && <span className="stat-prefix">{normalizedPrefix}</span>}
-          <span className="stat-value">{value}</span>
-          {suffix && <span className="stat-suffix" style={{ marginInlineStart: '0.15em' }}>{suffix}</span>}
-        </bdi>
+        {isCurrency ? (
+          /* Egyptian Currency Format: Number on the RIGHT, ج.م on the LEFT (ناحية الشمال) */
+          <span
+            dir="rtl"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'baseline',
+              gap: '0.3em',
+              fontVariantNumeric: 'tabular-nums'
+            }}
+          >
+            <span className="stat-value">{value}</span>
+            <span
+              className="stat-suffix"
+              style={{
+                fontSize: '0.7em',
+                fontWeight: '700',
+                color: 'inherit',
+                opacity: 0.9
+              }}
+            >
+              ج.م
+            </span>
+          </span>
+        ) : (
+          /* Numeric Stats (e.g. 100%, +15, +40, 4.9): Unified tight symbols */
+          <bdi
+            dir="ltr"
+            style={{
+              unicodeBidi: 'isolate',
+              fontVariantNumeric: 'tabular-nums',
+              display: 'inline-flex',
+              alignItems: 'baseline'
+            }}
+          >
+            {normalizedPrefix && <span className="stat-prefix" style={{ marginInlineEnd: '1px' }}>{normalizedPrefix}</span>}
+            <span className="stat-value">{value}</span>
+            {suffix && <span className="stat-suffix" style={{ marginInlineStart: '1px' }}>{suffix}</span>}
+          </bdi>
+        )}
       </span>
 
       {label && (
@@ -73,8 +99,8 @@ export default function Stat({
           className="stat-label"
           style={{
             fontFamily: 'var(--font-body)',
-            fontSize: 'var(--text-sm)',
-            color: variant === 'inverse' ? 'rgba(253, 251, 247, 0.85)' : 'var(--color-text-muted)',
+            fontSize: 'var(--text-xs)',
+            color: variant === 'inverse' ? 'rgba(250, 247, 242, 0.85)' : 'var(--color-text-muted)',
             marginTop: 'var(--space-1)',
             lineHeight: 'var(--leading-small)'
           }}

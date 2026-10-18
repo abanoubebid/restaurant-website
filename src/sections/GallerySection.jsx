@@ -43,7 +43,7 @@ export default function GallerySection() {
           subtitle="شاهد تفاصيل الشواء على جمر الخشب الطبيعي، والخبز البلدي الطازج على الحجر، وأجواء الدار التراثية الدافئة."
         />
 
-        {/* Gallery Grid with Real Food Photography */}
+        {/* Gallery Grid with Fixed Card Anatomy (No overlapping text) */}
         <div
           style={{
             display: 'grid',
@@ -67,14 +67,16 @@ export default function GallerySection() {
                 flexDirection: 'column',
                 transition: 'transform var(--transition-fast), box-shadow var(--transition-fast)',
                 outline: 'none',
-                boxShadow: 'var(--shadow-sm)'
+                boxShadow: 'var(--shadow-sm)',
+                height: '100%'
               }}
               className="gallery-card"
             >
+              {/* Photo */}
               <div
                 style={{
                   width: '100%',
-                  aspectRatio: item.aspect === 'wide' ? '16 / 10' : '4 / 3',
+                  aspectRatio: '16 / 10',
                   position: 'relative',
                   backgroundColor: 'var(--color-surface-dark)',
                   overflow: 'hidden'
@@ -84,7 +86,7 @@ export default function GallerySection() {
                   src={item.imageUrl}
                   alt={item.title}
                   width="600"
-                  height="400"
+                  height="375"
                   loading="lazy"
                   style={{
                     width: '100%',
@@ -105,21 +107,51 @@ export default function GallerySection() {
                     color: 'var(--color-accent-glow)',
                     fontSize: 'var(--text-xs)',
                     fontWeight: '700',
-                    padding: 'var(--space-1) var(--space-2-5, 10px)',
+                    padding: '3px 10px',
                     borderRadius: 'var(--radius-full)',
                     backdropFilter: 'blur(4px)'
                   }}
                 >
                   {item.category}
                 </span>
+
+                <div
+                  className="gallery-hover-zoom"
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    backgroundColor: 'rgba(22, 19, 17, 0.35)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    opacity: 0,
+                    transition: 'opacity var(--transition-fast)'
+                  }}
+                >
+                  <span
+                    style={{
+                      backgroundColor: 'var(--color-surface-card)',
+                      color: 'var(--color-text)',
+                      fontSize: 'var(--text-xs)',
+                      fontWeight: '700',
+                      padding: '6px 14px',
+                      borderRadius: 'var(--radius-full)',
+                      boxShadow: 'var(--shadow-md)'
+                    }}
+                  >
+                    عرض الصورة 🔍
+                  </span>
+                </div>
               </div>
 
+              {/* Title Strip: Full width, clean line-height, no collision */}
               <div
                 style={{
                   padding: 'var(--space-3-5, 14px) var(--space-4)',
+                  backgroundColor: 'var(--color-surface-card)',
+                  flex: 1,
                   display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between'
+                  alignItems: 'center'
                 }}
               >
                 <span
@@ -127,13 +159,12 @@ export default function GallerySection() {
                     fontFamily: 'var(--font-heading)',
                     fontSize: 'var(--text-sm)',
                     fontWeight: '700',
-                    color: 'var(--color-text)'
+                    color: 'var(--color-text)',
+                    lineHeight: '1.5',
+                    display: 'block'
                   }}
                 >
                   {item.title}
-                </span>
-                <span style={{ color: 'var(--color-accent-dark)', fontSize: 'var(--text-xs)', fontWeight: '700' }}>
-                  تكبير ↗
                 </span>
               </div>
             </button>
@@ -245,7 +276,10 @@ export default function GallerySection() {
 
       <style>{`
         .gallery-card:hover .gallery-img {
-          transform: scale(1.04);
+          transform: scale(1.05);
+        }
+        .gallery-card:hover .gallery-hover-zoom {
+          opacity: 1 !important;
         }
       `}</style>
     </section>

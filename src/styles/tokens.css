@@ -34,8 +34,8 @@
   /* ==========================================================================
      Typography & Arabic Line-Height Rules
      ========================================================================== */
-  --font-display: 'Amiri', serif;
-  --font-heading: 'Cairo', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Alexandria', system-ui, -apple-system, sans-serif;
+  --font-display: 'Alexandria', system-ui, -apple-system, sans-serif;
   --font-body: 'Tajawal', system-ui, -apple-system, sans-serif;
 
   --text-xs: 0.75rem;    /* 12px */
@@ -46,13 +46,13 @@
   --text-2xl: 1.5rem;    /* 24px */
   --text-3xl: 1.875rem;  /* 30px */
   --text-4xl: 2.25rem;   /* 36px */
-  --text-5xl: 3rem;      /* 48px */
-  --text-6xl: 3.75rem;   /* 60px */
+  --text-5xl: 2.75rem;   /* 44px */
+  --text-6xl: 3.25rem;   /* 52px */
 
-  /* Safe Arabic Line Heights (Strict Rule: never below 1.35 for headings, 1.8 for body) */
-  --leading-heading-tight: 1.35;
-  --leading-heading: 1.45;
-  --leading-body: 1.8;
+  /* Safe Arabic Line Heights - Generous room so letters, dots and diacritics NEVER collide */
+  --leading-heading-tight: 1.55;
+  --leading-heading: 1.65;
+  --leading-body: 1.85;
   --leading-small: 1.7;
 
   /* ==========================================================================

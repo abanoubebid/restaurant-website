@@ -13,8 +13,8 @@ export default function HeroSection() {
       id="hero"
       className="hero-section"
       style={{
-        paddingTop: 'clamp(var(--space-6), 4vw, var(--space-12))',
-        paddingBottom: 'clamp(var(--space-10), 6vw, var(--space-16))',
+        paddingTop: 'clamp(var(--space-6), 3vw, var(--space-10))',
+        paddingBottom: 'clamp(var(--space-10), 5vw, var(--space-16))',
         position: 'relative',
         backgroundColor: 'var(--color-surface)',
         borderBottom: '1px solid var(--color-border)'
@@ -46,7 +46,7 @@ export default function HeroSection() {
               aria-hidden="true"
             />
             <span style={{ fontSize: 'var(--text-xs)', fontWeight: '700', color: 'var(--color-text)' }}>
-              الشوايات شغالة حالياً — نستقبلكم يومياً حتى 1:00 صباحاً
+              الشوايات تعمل حالياً — نستقبلكم يومياً حتى 1:00 صباحاً
             </span>
           </div>
 
@@ -55,12 +55,12 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Asymmetric Editorial Hero Layout */}
+        {/* Hero Split Layout */}
         <div
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 460px), 1fr))',
-            gap: 'clamp(var(--space-8), 5vw, var(--space-12))',
+            gap: 'clamp(var(--space-6), 4vw, var(--space-10))',
             alignItems: 'center'
           }}
         >
@@ -68,60 +68,58 @@ export default function HeroSection() {
           <div style={{ textAlign: 'start' }}>
             <span
               style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-xl)',
-                fontStyle: 'italic',
+                fontFamily: 'var(--font-body)',
+                fontSize: 'var(--text-sm)',
+                fontWeight: '700',
                 color: 'var(--color-accent-dark)',
-                display: 'block',
-                marginBottom: 'var(--space-2)'
+                display: 'inline-block',
+                marginBottom: 'var(--space-3)',
+                backgroundColor: 'rgba(194, 106, 8, 0.08)',
+                padding: '4px 12px',
+                borderRadius: 'var(--radius-full)'
               }}
             >
               مشويات فحم السنديان وطواجن الفخار القناوي
             </span>
 
+            {/* Headline with safe line-height and no overlapping letters */}
             <h1
               style={{
                 fontFamily: 'var(--font-heading)',
-                fontSize: 'clamp(2.1rem, 3.8vw, 3.6rem)',
-                fontWeight: '900',
+                fontSize: 'clamp(1.75rem, 3.2vw, 2.65rem)',
+                fontWeight: '700',
                 color: 'var(--color-text)',
-                lineHeight: '1.25',
+                lineHeight: '1.55',
                 marginBottom: 'var(--space-4)',
                 letterSpacing: 'normal'
               }}
             >
               طعم البيت اللي بيوحشك، <br />
-              <span
-                style={{
-                  color: 'var(--color-primary)',
-                  position: 'relative',
-                  display: 'inline-block'
-                }}
-              >
+              <span style={{ color: 'var(--color-primary)' }}>
                 بنَفَس الحطب وريحة الجمر البلدي.
               </span>
             </h1>
 
             <p
               style={{
-                fontSize: 'clamp(1.05rem, 1.25vw, 1.2rem)',
-                lineHeight: 'var(--leading-body)',
+                fontSize: 'clamp(0.95rem, 1.1vw, 1.05rem)',
+                lineHeight: '1.85',
                 color: 'var(--color-text-muted)',
-                marginBottom: 'var(--space-8)',
-                maxWidth: '540px'
+                marginBottom: 'var(--space-6)',
+                maxWidth: '520px'
               }}
             >
               مفيش لحمة مجمدة بتدخل مطبخنا، ومفيش فول صويا أو ملينات في الكفتة. لحوم بلدية طازجة من مزارعنا بتدبح يومياً، وتتشوي أمامك على فحم الحطب مع عيش بلدي ملهلب من الفرن وطواجن فخار بتفرول في إيدك.
             </p>
 
-            {/* Direct Conversion Actions */}
+            {/* Actions */}
             <div
               style={{
                 display: 'flex',
                 flexWrap: 'wrap',
                 gap: 'var(--space-3)',
                 alignItems: 'center',
-                marginBottom: 'var(--space-8)'
+                marginBottom: 'var(--space-6)'
               }}
             >
               <Button
@@ -136,7 +134,7 @@ export default function HeroSection() {
                 style={{
                   backgroundColor: 'var(--color-accent-dark)',
                   color: 'var(--color-text-inverse)',
-                  boxShadow: '0 4px 14px rgba(194, 106, 8, 0.3)'
+                  boxShadow: '0 4px 14px rgba(194, 106, 8, 0.25)'
                 }}
               >
                 اطلب وجبتك ساخنة عبر واتساب
@@ -154,7 +152,7 @@ export default function HeroSection() {
               </Button>
             </div>
 
-            {/* Live Prep Note */}
+            {/* Delivery Note */}
             <div
               style={{
                 display: 'inline-flex',
@@ -185,8 +183,8 @@ export default function HeroSection() {
                 position: 'relative',
                 borderRadius: 'var(--radius-xl)',
                 overflow: 'hidden',
-                boxShadow: 'var(--shadow-xl)',
-                border: '2px solid var(--color-border)',
+                boxShadow: 'var(--shadow-lg)',
+                border: '1.5px solid var(--color-border)',
                 backgroundColor: 'var(--color-surface-dark)'
               }}
             >
@@ -204,27 +202,27 @@ export default function HeroSection() {
                 }}
               />
 
-              {/* Editorial Caption Tag */}
+              {/* Caption Tag */}
               <div
                 style={{
                   position: 'absolute',
                   bottom: 0,
                   insetInline: 0,
-                  padding: 'var(--space-4) var(--space-6)',
+                  padding: 'var(--space-4) var(--space-5)',
                   background: 'linear-gradient(to top, rgba(22, 19, 17, 0.95) 0%, rgba(22, 19, 17, 0.6) 70%, transparent 100%)',
                   color: 'var(--color-text-inverse)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  gap: 'var(--space-4)'
+                  gap: 'var(--space-3)'
                 }}
               >
                 <div>
                   <span
                     style={{
                       fontFamily: 'var(--font-heading)',
-                      fontSize: 'var(--text-base)',
-                      fontWeight: '800',
+                      fontSize: 'var(--text-sm)',
+                      fontWeight: '700',
                       color: 'var(--color-accent-glow)',
                       display: 'block'
                     }}
@@ -242,14 +240,14 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Tactile Stamp Badge (Physical Restaurant Detail) */}
+            {/* Tactile Stamp Badge */}
             <div
               style={{
                 position: 'absolute',
-                top: '-16px',
-                insetInlineEnd: '-16px',
-                width: '84px',
-                height: '84px',
+                top: '-14px',
+                insetInlineEnd: '-14px',
+                width: '78px',
+                height: '78px',
                 borderRadius: '50%',
                 backgroundColor: 'var(--color-primary)',
                 color: 'var(--color-text-inverse)',
@@ -257,70 +255,158 @@ export default function HeroSection() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: 'var(--shadow-lg)',
+                boxShadow: 'var(--shadow-md)',
                 border: '3px solid var(--color-surface)',
-                transform: 'rotate(12deg)',
+                transform: 'rotate(10deg)',
                 textAlign: 'center'
               }}
             >
-              <span style={{ fontSize: '9px', fontWeight: '800', letterSpacing: '0.5px' }}>ذبائح بلدية</span>
-              <span style={{ fontFamily: 'var(--font-heading)', fontSize: '13px', fontWeight: '900', lineHeight: 1 }}>100%</span>
-              <span style={{ fontSize: '9px', fontWeight: '700' }}>طازجة يومياً</span>
+              <span style={{ fontSize: '8px', fontWeight: '800' }}>ذبائح بلدية</span>
+              <span style={{ fontFamily: 'var(--font-heading)', fontSize: '13px', fontWeight: '800', lineHeight: 1.1 }}>100%</span>
+              <span style={{ fontSize: '8px', fontWeight: '700' }}>طازجة يومياً</span>
             </div>
           </div>
         </div>
 
-        {/* Hearth Metrics Strip (Tactile Editorial Numbers) */}
+        {/* Unified Hearth Metrics Strip (Screenshot 2 Fix: Perfectly unified cards & symbols) */}
         <div
           style={{
-            marginTop: 'clamp(var(--space-8), 5vw, var(--space-12))',
+            marginTop: 'clamp(var(--space-6), 4vw, var(--space-10))',
             backgroundColor: 'var(--color-surface-card)',
-            border: '1px solid var(--color-border)',
-            borderRadius: 'var(--radius-lg)',
+            border: '1.5px solid var(--color-border)',
+            borderRadius: 'var(--radius-xl)',
             padding: 'var(--space-5) var(--space-6)',
             boxShadow: 'var(--shadow-sm)',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
             gap: 'var(--space-4)',
             alignItems: 'center'
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-            <Icon name="meat" size={26} color="var(--color-primary)" />
+          {/* Item 1 */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 'var(--space-3)',
+              padding: 'var(--space-2) var(--space-3)'
+            }}
+          >
+            <div
+              style={{
+                width: '42px',
+                height: '42px',
+                borderRadius: 'var(--radius-md)',
+                backgroundColor: 'rgba(136, 27, 27, 0.08)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--color-primary)',
+                flexShrink: 0
+              }}
+            >
+              <Icon name="meat" size={22} />
+            </div>
             <div>
               <Stat value="100" suffix="%" size="md" variant="default" />
-              <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)' }}>
+              <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', marginTop: '2px' }}>
                 لحوم بلدية بدون مجمدات
               </div>
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-            <Icon name="flame" size={26} color="var(--color-accent-dark)" />
+          {/* Item 2 */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 'var(--space-3)',
+              padding: 'var(--space-2) var(--space-3)'
+            }}
+          >
+            <div
+              style={{
+                width: '42px',
+                height: '42px',
+                borderRadius: 'var(--radius-md)',
+                backgroundColor: 'rgba(194, 106, 8, 0.1)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--color-accent-dark)',
+                flexShrink: 0
+              }}
+            >
+              <Icon name="flame" size={22} />
+            </div>
             <div>
               <Stat value="15" prefix="+" size="md" variant="accent" />
-              <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)' }}>
-                عاماً من الصنعة وشواء الفحم
+              <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', marginTop: '2px' }}>
+                عاماً من شواء الفحم الأصيل
               </div>
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-            <Icon name="pot" size={26} color="var(--color-primary)" />
+          {/* Item 3 */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 'var(--space-3)',
+              padding: 'var(--space-2) var(--space-3)'
+            }}
+          >
+            <div
+              style={{
+                width: '42px',
+                height: '42px',
+                borderRadius: 'var(--radius-md)',
+                backgroundColor: 'rgba(136, 27, 27, 0.08)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--color-primary)',
+                flexShrink: 0
+              }}
+            >
+              <Icon name="pot" size={22} />
+            </div>
             <div>
               <Stat value="40" prefix="+" size="md" variant="default" />
-              <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)' }}>
-                صنفاً طازجاً يخرج من الفرن يومياً
+              <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', marginTop: '2px' }}>
+                صنفاً طازجاً من الفرن والشواية
               </div>
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-            <Icon name="star" size={24} color="var(--color-accent)" />
+          {/* Item 4 */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 'var(--space-3)',
+              padding: 'var(--space-2) var(--space-3)'
+            }}
+          >
+            <div
+              style={{
+                width: '42px',
+                height: '42px',
+                borderRadius: 'var(--radius-md)',
+                backgroundColor: 'rgba(194, 106, 8, 0.1)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--color-accent-dark)',
+                flexShrink: 0
+              }}
+            >
+              <Icon name="star" size={22} />
+            </div>
             <div>
               <Stat value="4.9" size="md" variant="accent" />
-              <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)' }}>
-                تقييم ضيوف الدار بالتجمع ({restaurantConfig.serviceStats.ratingReviewsCount})
+              <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', marginTop: '2px' }}>
+                تقييم ضيوف الدار ({restaurantConfig.serviceStats.ratingReviewsCount})
               </div>
             </div>
           </div>
