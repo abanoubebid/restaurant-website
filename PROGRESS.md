@@ -31,12 +31,22 @@ A professional, modern, fully responsive landing page (single page) for a restau
    - رفع تباين النصوص التوضيحية للبطاقات لتقرأ بوضوح فائق.
    - حل مشكلة تداخل نص عنوان معرض الصور ("طاجن أم علي") بنقل زر التكبير إلى طبقة hover علوية أنيقة.
 
+4. **الهدر لازم يكون مميز و شكله كويس (Header Redesign):**
+   - إعادة تصميم الهدر بالكامل بهوية فخمة مستوحاة من طابع الحطب والفحم (Dark Hearth Luxury Aesthetic `#191411` مع حواف ذهبية وعنبرية رقيقة).
+   - إضافة شريط ضيافة علوي أنيق (Top Hospitality Bar) يعرض حالة الشواية المباشرة ("نار الحطب مشتعلة الآن • نستقبلكم حتى 1:00 ص") ورقم الخط الساخن وزر واتساب سريع.
+   - تصميم شعار "دار الحطب" بختم حرفي (Artisanal Crest) مع إطار ذهبي ونار متوهجة وكلمة "أصلي" بخط Alexandria 800.
+   - فرض `white-space: nowrap !important;` على كافة الروابط وزر الحجز ورقم الهاتف لمنع أي انكسار للكلمات على سطرين نهائياً.
+   - صياغة روابط مختصرة وواضحة (الرئيسية، المشاوي والصواني، قائمة الطعام، عروض اللِمة، أصول الصنعة، الموقع والمواعيد) مع تأثير خط عنبري سفلي عند التمرير.
+   - زر حجز طاولة رئيسي بتدرج ناري ووهج راقٍ وسهم توجيهي منضبط.
+   - قائمة هاتف منسدلة فاخرة (Mobile Drawer) ببطاقة مواعيد، وأزرار اتصال وواتساب وحجز فورية كاملة اللمس.
+
 ---
 
 ## 3. TASK STATUS
 
 - [x] All 32 Micro-Tasks completed and verified.
 - [x] Typography, Currency formatting, and Card Alignment refined according to user visual feedback.
+- [x] Header redesigned into a distinctive luxury hearth aesthetic with zero text wrapping.
 - [x] 13 Automated unit tests passing (100%).
 - [x] Production build clean in `dist/`.
 
@@ -44,5 +54,6 @@ A professional, modern, fully responsive landing page (single page) for a restau
 
 ## 4. COMMIT & DEPLOY STATUS
 
-- Commit: `fix(ui): adjust font to Alexandria, place EGP on left, unify stats, and align offer cards`
+- Commit: `feat(header): redesign luxury distinctive hearth header with single-line nav and artisan crest`
 - Ready to push to GitHub: `git push origin main`.
+
