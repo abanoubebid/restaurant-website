@@ -46,7 +46,7 @@ export default function HeroSection() {
               aria-hidden="true"
             />
             <span style={{ fontSize: 'var(--text-xs)', fontWeight: '700', color: 'var(--color-text)' }}>
-              الشوايات تعمل حالياً — نستقبلكم يومياً حتى 1:00 صباحاً
+              الشوايات تعمل الآن — السبت إلى الأربعاء حتى 1:00 ص • الخميس والجمعة حتى 2:00 ص
             </span>
           </div>
 

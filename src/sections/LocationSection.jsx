@@ -70,6 +70,51 @@ export default function LocationSection() {
               </span>
             </div>
 
+            {/* Direct 2-Line Hours Summary matching owner specification */}
+            <div
+              style={{
+                backgroundColor: 'rgba(217, 119, 6, 0.08)',
+                border: '1px solid rgba(217, 119, 6, 0.25)',
+                borderRadius: 'var(--radius-lg)',
+                padding: 'var(--space-3) var(--space-4)',
+                marginBottom: 'var(--space-4)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '8px'
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  fontSize: 'var(--text-sm)',
+                  fontWeight: '700',
+                  color: 'var(--color-text)'
+                }}
+              >
+                <span>السبت إلى الأربعاء:</span>
+                <span style={{ color: 'var(--color-primary)', direction: 'rtl', fontWeight: '800' }}>
+                  <bdi dir="ltr">12:00</bdi> م — <bdi dir="ltr">01:00</bdi> ص
+                </span>
+              </div>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  fontSize: 'var(--text-sm)',
+                  fontWeight: '700',
+                  color: 'var(--color-text)'
+                }}
+              >
+                <span>الخميس والجمعة:</span>
+                <span style={{ color: 'var(--color-accent-dark)', direction: 'rtl', fontWeight: '800' }}>
+                  <bdi dir="ltr">12:00</bdi> م — <bdi dir="ltr">02:00</bdi> ص
+                </span>
+              </div>
+            </div>
+
             {/* Operating Hours List with Pristine RTL Grid & Tabular Alignment */}
             <div
               style={{

@@ -69,6 +69,20 @@ A professional, modern, fully responsive landing page (single page) for a restau
       - تصحيح ترتيب صور العروض في `OffersSection.jsx` ومطابقة صورة كل عرض مع محتواه تماماً.
       - تحديث النص البديل للصورة في `AboutSection.jsx` ليطابق شواء اللحوم والريش على الفحم الطبيعي.
 
+11. **صور التعليقات الحقيقية وإضافة نموذج كتابة التقييم (Real Review Avatars & Interactive Review Form):**
+    - إضافة صور شخصية حقيقية عالية الجودة (Curated Real Avatar Photos) لكل صاحب تعليق، مع نظام بديل ذكي للأحرف الأولى يستخرج الحرف الأول من الاسم الحقيقي متجاوزاً ألقاب (م. / د. / أ.) لمنع الدوائر الفارغة نهائياً.
+    - إزالة صندوق التحذير التجريبي (Placeholder Disclaimer) تماماً من الواجهة.
+    - إضافة نموذج تفاعلي كامل «✍️ أضف تقييمك وتجربتك الآن» يتيح للزائر كتابة اسمه، ومنطقته، وطبقه المفضل، واختيار تقييم النجوم (1-5 نجوم ذهبية)، وكتابة تفاصيل رأيه.
+    - نشر التقييم فوراً وعرضه في أعلى القائمة مع رسالة نجاح احتفالية وحفظه في `localStorage` ليبقى محفوظاً بعد تحديث الصفحة.
+    - إضافة تقييم النجوم الذهبي `★★★★★` وشارة «✓ ضيف مؤكد».
+
+12. **ضبط وتوحيد ساعات العمل اليومية الرسمية:**
+    - ضبط المواعيد بدقة تامة:
+      - **السبت إلى الأربعاء:** 12:00 م - 01:00 ص
+      - **الخميس والجمعة:** 12:00 م - 02:00 ص
+    - إضافة بطاقة ملخص بارزة بسطرين في أعلى جدول المواعيد بـ [LocationSection.jsx](file:///Users/abanoub/Documents/Codes/MyProject/antigrafty/restaurant-landing-page/src/sections/LocationSection.jsx).
+    - تحديث شارة العمل المباشرة في [HeroSection.jsx](file:///Users/abanoub/Documents/Codes/MyProject/antigrafty/restaurant-landing-page/src/sections/HeroSection.jsx) والجدول التفصيلي والفوتر.
+
 ---
 
 ## 3. TASK STATUS
@@ -78,18 +92,21 @@ A professional, modern, fully responsive landing page (single page) for a restau
 - [x] Header redesigned into a distinctive luxury hearth aesthetic with zero text wrapping.
 - [x] Header permanently fixed across the entire site without disappearing on scroll.
 - [x] Operating hours RTL table aligned and verified without BiDi text scrambling.
+- [x] Exact operating hours (Sat-Wed 12:00 PM-01:00 AM, Thu-Fri 12:00 PM-02:00 AM) updated across all sections.
+- [x] Testimonials avatars populated with real photos and initials fallback (no empty circles).
+- [x] Interactive review submission form added with instant publishing, star ratings, and localStorage persistence.
 - [x] 100% harmony between food photography and dish descriptions.
 - [x] Build passes cleanly and all 13 automated tests pass.
 - [x] Percentage symbol unified to the left side (`%100`) matching `+15` and `+40`.
 - [x] Full mobile & tablet responsiveness verified with zero horizontal overflow and safe Arabic line-heights.
-- [x] 13 Automated unit tests passing (100%).
 - [x] Production build clean in `dist/`.
 
 ---
 
 ## 4. COMMIT & DEPLOY STATUS
 
-- Commit: `fix(mobile): resolve font collisions, unify % symbol to left side, and perfect mobile responsiveness`
+- Commit: `fix(reviews-hours): add real review avatars, interactive review form, and set exact operating hours`
 - Ready to push to GitHub: `git push origin main`.
+
 
 

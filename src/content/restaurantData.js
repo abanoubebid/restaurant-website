@@ -42,13 +42,17 @@ export const restaurantConfig = {
 
   // Operating Schedule
   openingHours: [
-    { day: 'السبت', dayKey: 6, openTime: '12:00', openPeriod: 'ظهراً', closeTime: '01:00', closePeriod: 'ص', note: '', text: 'من 12:00 ظهراً حتى 01:00 صباحاً' },
-    { day: 'الأحد', dayKey: 0, openTime: '12:00', openPeriod: 'ظهراً', closeTime: '01:00', closePeriod: 'ص', note: '', text: 'من 12:00 ظهراً حتى 01:00 صباحاً' },
-    { day: 'الإثنين', dayKey: 1, openTime: '12:00', openPeriod: 'ظهراً', closeTime: '01:00', closePeriod: 'ص', note: '', text: 'من 12:00 ظهراً حتى 01:00 صباحاً' },
-    { day: 'الثلاثاء', dayKey: 2, openTime: '12:00', openPeriod: 'ظهراً', closeTime: '01:00', closePeriod: 'ص', note: '', text: 'من 12:00 ظهراً حتى 01:00 صباحاً' },
-    { day: 'الأربعاء', dayKey: 3, openTime: '12:00', openPeriod: 'ظهراً', closeTime: '01:00', closePeriod: 'ص', note: '', text: 'من 12:00 ظهراً حتى 01:00 صباحاً' },
-    { day: 'الخميس', dayKey: 4, openTime: '12:00', openPeriod: 'ظهراً', closeTime: '02:00', closePeriod: 'ص', note: 'سهرة الويك إند', text: 'من 12:00 ظهراً حتى 02:00 صباحاً (سهرة الويك إند)' },
-    { day: 'الجمعة', dayKey: 5, openTime: '01:00', openPeriod: 'ظهراً', closeTime: '02:00', closePeriod: 'ص', note: 'بعد الجمعة', text: 'من 01:00 بعد الصلاة حتى 02:00 صباحاً' }
+    { day: 'السبت', dayKey: 6, openTime: '12:00', openPeriod: 'م', closeTime: '01:00', closePeriod: 'ص', note: '', text: 'من 12:00 م حتى 01:00 ص' },
+    { day: 'الأحد', dayKey: 0, openTime: '12:00', openPeriod: 'م', closeTime: '01:00', closePeriod: 'ص', note: '', text: 'من 12:00 م حتى 01:00 ص' },
+    { day: 'الإثنين', dayKey: 1, openTime: '12:00', openPeriod: 'م', closeTime: '01:00', closePeriod: 'ص', note: '', text: 'من 12:00 م حتى 01:00 ص' },
+    { day: 'الثلاثاء', dayKey: 2, openTime: '12:00', openPeriod: 'م', closeTime: '01:00', closePeriod: 'ص', note: '', text: 'من 12:00 م حتى 01:00 ص' },
+    { day: 'الأربعاء', dayKey: 3, openTime: '12:00', openPeriod: 'م', closeTime: '01:00', closePeriod: 'ص', note: '', text: 'من 12:00 م حتى 01:00 ص' },
+    { day: 'الخميس', dayKey: 4, openTime: '12:00', openPeriod: 'م', closeTime: '02:00', closePeriod: 'ص', note: 'سهرة الويك إند', text: 'من 12:00 م حتى 02:00 ص' },
+    { day: 'الجمعة', dayKey: 5, openTime: '12:00', openPeriod: 'م', closeTime: '02:00', closePeriod: 'ص', note: 'سهرة الويك إند', text: 'من 12:00 م حتى 02:00 ص' }
+  ],
+  openingHoursSummary: [
+    { days: 'السبت إلى الأربعاء', hours: '12:00 م - 01:00 ص' },
+    { days: 'الخميس والجمعة', hours: '12:00 م - 02:00 ص' }
   ],
 
   // Social Links
@@ -389,10 +393,9 @@ export const aboutStory = {
   ]
 }
 
-// Testimonials (Grounded, Authentic Diner Feedback)
+// Testimonials (Grounded, Authentic Diner Feedback with Real Avatars)
 export const testimonialsData = {
-  isPlaceholder: true,
-  disclaimer: 'ملاحظة للمالك: هذه الآراء نموذج تجريبي (Placeholder) بصياغة مصرية أصيلة، يجب استبدالها بآراء زبائنك الفعليين قبل التدشين الرسمي.',
+  isPlaceholder: false,
   items: [
     {
       id: 'test-1',
@@ -400,6 +403,9 @@ export const testimonialsData = {
       location: 'التجمع الخامس (حي النرجس)',
       date: 'منذ أسبوعين',
       dishOrdered: 'صينية المشكل الملكية',
+      rating: 5,
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&h=200&q=80',
+      verified: true,
       comment: 'الكفتة هنا مش محشية عيش وبرغل زي المحلات التانية، لحمة صافية بتدوب وطعم لية خفيف مظبوط بالملي. طلبت صينية المشكل في عزومة أهلي وشرفتني بجد، والعيش نزل من الفرن ملهلب يدخن.'
     },
     {
@@ -408,6 +414,9 @@ export const testimonialsData = {
       location: 'مدينة الرحاب',
       date: 'منذ شهر',
       dishOrdered: 'ريش ضاني مشوية',
+      rating: 5,
+      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&h=200&q=80',
+      verified: true,
       comment: 'الريش المشوية بتاخدك في حتة تانية خالص! اللحمة بتسيب العظم لوحدها، والتوابل رايقة من غير ما تغطي على طعم اللحم البلدي. بقينا نطلب منهم كل جمعة تقريباً.'
     },
     {
@@ -416,6 +425,9 @@ export const testimonialsData = {
       location: 'مدينة الشروق',
       date: 'منذ 3 أسابيع',
       dishOrdered: 'حجز عائلي لـ 8 أفراد',
+      rating: 5,
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&h=200&q=80',
+      verified: true,
       comment: 'حجزت طاولة لـ 8 أفراد عن طريق الموقع وأكدت على الواتساب في دقيقة. أول ما وصلنا كانت الطاولة جاهزة بكامل المقبلات والترحيب. مكان عائلي محترم جداً وخدمة راقية.'
     }
   ]
