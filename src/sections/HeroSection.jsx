@@ -86,15 +86,16 @@ export default function HeroSection() {
             <h1
               style={{
                 fontFamily: 'var(--font-heading)',
-                fontSize: 'clamp(1.75rem, 3.2vw, 2.65rem)',
+                fontSize: 'clamp(1.55rem, 3.8vw, 2.65rem)',
                 fontWeight: '700',
                 color: 'var(--color-text)',
-                lineHeight: '1.55',
+                lineHeight: '1.75',
                 marginBottom: 'var(--space-4)',
-                letterSpacing: 'normal'
+                letterSpacing: 'normal',
+                textWrap: 'balance'
               }}
             >
-              طعم البيت اللي بيوحشك، <br />
+              طعم البيت اللي بيوحشك، <br className="hidden-mobile" />
               <span style={{ color: 'var(--color-primary)' }}>
                 بنَفَس الحطب وريحة الجمر البلدي.
               </span>
@@ -103,7 +104,7 @@ export default function HeroSection() {
             <p
               style={{
                 fontSize: 'clamp(0.95rem, 1.1vw, 1.05rem)',
-                lineHeight: '1.85',
+                lineHeight: 'var(--leading-body)',
                 color: 'var(--color-text-muted)',
                 marginBottom: 'var(--space-6)',
                 maxWidth: '520px'
@@ -114,6 +115,7 @@ export default function HeroSection() {
 
             {/* Actions */}
             <div
+              className="hero-actions-group"
               style={{
                 display: 'flex',
                 flexWrap: 'wrap',
@@ -242,6 +244,7 @@ export default function HeroSection() {
 
             {/* Tactile Stamp Badge */}
             <div
+              className="hero-stamp-badge"
               style={{
                 position: 'absolute',
                 top: '-14px',
@@ -258,18 +261,20 @@ export default function HeroSection() {
                 boxShadow: 'var(--shadow-md)',
                 border: '3px solid var(--color-surface)',
                 transform: 'rotate(10deg)',
-                textAlign: 'center'
+                textAlign: 'center',
+                zIndex: 2
               }}
             >
               <span style={{ fontSize: '8px', fontWeight: '800' }}>ذبائح بلدية</span>
-              <span style={{ fontFamily: 'var(--font-heading)', fontSize: '13px', fontWeight: '800', lineHeight: 1.1 }}>100%</span>
+              <span style={{ fontFamily: 'var(--font-heading)', fontSize: '13px', fontWeight: '800', lineHeight: 1.1 }}>%100</span>
               <span style={{ fontSize: '8px', fontWeight: '700' }}>طازجة يومياً</span>
             </div>
           </div>
         </div>
 
-        {/* Unified Hearth Metrics Strip (Screenshot 2 Fix: Perfectly unified cards & symbols) */}
+        {/* Unified Hearth Metrics Strip (Unified symbols: %100, +15, +40 on left side) */}
         <div
+          className="hero-stats-grid"
           style={{
             marginTop: 'clamp(var(--space-6), 4vw, var(--space-10))',
             backgroundColor: 'var(--color-surface-card)',
@@ -285,6 +290,7 @@ export default function HeroSection() {
         >
           {/* Item 1 */}
           <div
+            className="hero-stat-item"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -308,7 +314,7 @@ export default function HeroSection() {
               <Icon name="meat" size={22} />
             </div>
             <div>
-              <Stat value="100" suffix="%" size="md" variant="default" />
+              <Stat value="100" prefix="%" size="md" variant="default" />
               <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', marginTop: '2px' }}>
                 لحوم بلدية بدون مجمدات
               </div>
@@ -412,6 +418,32 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .hero-actions-group {
+            flex-direction: column !important;
+            width: 100% !important;
+          }
+          .hero-actions-group > * {
+            width: 100% !important;
+          }
+          .hero-stamp-badge {
+            top: 10px !important;
+            inset-inline-end: 10px !important;
+            transform: rotate(6deg) scale(0.88) !important;
+          }
+          .hero-stats-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+            padding: 12px 14px !important;
+          }
+          .hero-stat-item {
+            padding: 4px !important;
+            gap: 8px !important;
+          }
+        }
+      `}</style>
     </section>
   )
 }

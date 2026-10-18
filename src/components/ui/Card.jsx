@@ -16,9 +16,9 @@ export default function Card({
 }) {
   const paddings = {
     none: '0',
-    sm: 'var(--space-4)',
-    md: 'var(--space-6)',
-    lg: 'var(--space-8)'
+    sm: 'clamp(var(--space-2), 2vw, var(--space-4))',
+    md: 'clamp(var(--space-4), 3vw, var(--space-6))',
+    lg: 'clamp(var(--space-4), 4vw, var(--space-8))'
   }
 
   const variants = {

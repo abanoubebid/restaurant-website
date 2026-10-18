@@ -265,7 +265,8 @@ export default function Header() {
                   whiteSpace: 'nowrap'
                 }}
               >
-                مشاوي وطواجن فخار • التجمع الخامس
+                <span>مشاوي وطواجن فخار</span>
+                <span className="hidden-mobile"> • التجمع الخامس</span>
               </span>
             </div>
           </a>

@@ -50,10 +50,10 @@
   --text-6xl: 3.25rem;   /* 52px */
 
   /* Safe Arabic Line Heights - Generous room so letters, dots and diacritics NEVER collide */
-  --leading-heading-tight: 1.55;
-  --leading-heading: 1.65;
-  --leading-body: 1.85;
-  --leading-small: 1.7;
+  --leading-heading-tight: 1.7;
+  --leading-heading: 1.8;
+  --leading-body: 1.95;
+  --leading-small: 1.75;
 
   /* ==========================================================================
      Spacing Scale (4px / 8px Grid)

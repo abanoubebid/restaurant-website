@@ -15,8 +15,10 @@ export default function Stat({
   className = '',
   style = {}
 }) {
-  const normalizedPrefix = prefix === 'x' || prefix === 'X' ? '×' : prefix
   const isCurrency = suffix === 'ج.م' || suffix.includes('ج.م')
+  const isPercent = suffix === '%' || suffix === '٪' || prefix === '%' || prefix === '٪'
+  const effectivePrefix = isPercent ? '%' : (prefix === 'x' || prefix === 'X' ? '×' : prefix)
+  const effectiveSuffix = isPercent ? '' : suffix
 
   // Size styling tokens
   const sizeStyles = {
@@ -77,7 +79,7 @@ export default function Stat({
             </span>
           </span>
         ) : (
-          /* Numeric Stats (e.g. 100%, +15, +40, 4.9): Unified tight symbols */
+          /* Numeric Stats (e.g. %100, +15, +40, 4.9): Unified symbols strictly on the LEFT */
           <bdi
             dir="ltr"
             style={{
@@ -87,9 +89,9 @@ export default function Stat({
               alignItems: 'baseline'
             }}
           >
-            {normalizedPrefix && <span className="stat-prefix" style={{ marginInlineEnd: '1px' }}>{normalizedPrefix}</span>}
+            {effectivePrefix && <span className="stat-prefix" style={{ marginInlineEnd: '1px' }}>{effectivePrefix}</span>}
             <span className="stat-value">{value}</span>
-            {suffix && <span className="stat-suffix" style={{ marginInlineStart: '1px' }}>{suffix}</span>}
+            {effectiveSuffix && <span className="stat-suffix" style={{ marginInlineStart: '1px' }}>{effectiveSuffix}</span>}
           </bdi>
         )}
       </span>
