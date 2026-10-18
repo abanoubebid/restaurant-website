@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { testimonialsData } from '../content/restaurantData'
+import React, { useState } from 'react'
+import { useRestaurant } from '../context/RestaurantContext'
 import SectionHeading from '../components/ui/SectionHeading'
 import Button from '../components/ui/Button'
 import Icon from '../components/base/Icon'
@@ -63,7 +63,7 @@ function AvatarImage({ src, alt, fallbackText }) {
 }
 
 export default function TestimonialsSection() {
-  const [reviews, setReviews] = useState(testimonialsData.items)
+  const { reviews, addReview } = useRestaurant()
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [rating, setRating] = useState(5)
   const [formData, setFormData] = useState({
@@ -74,21 +74,6 @@ export default function TestimonialsSection() {
   })
   const [submittedSuccess, setSubmittedSuccess] = useState(false)
   const [formError, setFormError] = useState('')
-
-  // Load any previously submitted local reviews
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem('dar_alhatab_guest_reviews')
-      if (saved) {
-        const parsed = JSON.parse(saved)
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          setReviews([...parsed, ...testimonialsData.items])
-        }
-      }
-    } catch {
-      // Ignore localStorage errors
-    }
-  }, [])
 
   const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }))
@@ -109,29 +94,14 @@ export default function TestimonialsSection() {
     }
 
     const newReview = {
-      id: `user-review-${Date.now()}`,
       author: formData.author.trim(),
       location: formData.location.trim() || 'القاهرة الجديدة',
-      date: 'الآن (مشارك حديثاً)',
       dishOrdered: formData.dishOrdered.trim() || 'مشاوي على الفحم',
       rating: rating,
-      verified: true,
-      isUserSubmitted: true,
-      avatar: '',
       comment: formData.comment.trim()
     }
 
-    const updated = [newReview, ...reviews]
-    setReviews(updated)
-
-    // Save to localStorage
-    try {
-      const stored = JSON.parse(localStorage.getItem('dar_alhatab_guest_reviews') || '[]')
-      localStorage.setItem('dar_alhatab_guest_reviews', JSON.stringify([newReview, ...stored]))
-    } catch {
-      // Ignore storage errors
-    }
-
+    addReview(newReview)
     trackEvent('review_submitted', { author: newReview.author, rating: rating })
 
     setSubmittedSuccess(true)

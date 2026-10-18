@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { restaurantConfig, navLinks } from '../../content/restaurantData'
+import { navLinks } from '../../content/restaurantData'
+import { useRestaurant } from '../../context/RestaurantContext'
 import Icon from '../base/Icon'
 import Arrow from '../base/Arrow'
 import { trackEvent } from '../../utils/analytics'
 
 export default function Header() {
+  const { config } = useRestaurant()
+  const restaurantConfig = config
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const menuRef = useRef(null)
@@ -230,8 +233,29 @@ export default function Header() {
               </a>
             </div>
 
-            <div className="mobile-drawer-footer">
-              📍 مجمع ووترواي، شارع التسعين الشمالي، التجمع الخامس
+            <div className="mobile-drawer-footer" style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center' }}>
+              <div>📍 {restaurantConfig.contact.address}</div>
+              <a
+                href="/admin"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setMobileMenuOpen(false)
+                  window.history.pushState({}, '', '/admin')
+                  window.dispatchEvent(new PopStateEvent('popstate'))
+                }}
+                style={{
+                  color: 'var(--color-accent-glow)',
+                  fontSize: '0.8rem',
+                  textDecoration: 'none',
+                  fontWeight: '700',
+                  padding: '4px 10px',
+                  backgroundColor: 'rgba(217, 119, 6, 0.15)',
+                  borderRadius: '6px',
+                  border: '1px solid rgba(217, 119, 6, 0.3)'
+                }}
+              >
+                👑 لوحة تحكم الإدارة (للأدمن)
+              </a>
             </div>
           </div>
         </div>

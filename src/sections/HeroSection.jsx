@@ -299,6 +299,7 @@ export default function HeroSection() {
             }}
           >
             <div
+              className="stat-icon-wrapper"
               style={{
                 width: '42px',
                 height: '42px',
@@ -313,9 +314,9 @@ export default function HeroSection() {
             >
               <Icon name="meat" size={22} />
             </div>
-            <div>
+            <div className="stat-content">
               <Stat value="100" prefix="%" size="md" variant="default" />
-              <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', marginTop: '2px' }}>
+              <div className="stat-label" style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', marginTop: '2px' }}>
                 لحوم بلدية بدون مجمدات
               </div>
             </div>
@@ -323,6 +324,7 @@ export default function HeroSection() {
 
           {/* Item 2 */}
           <div
+            className="hero-stat-item"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -331,6 +333,7 @@ export default function HeroSection() {
             }}
           >
             <div
+              className="stat-icon-wrapper"
               style={{
                 width: '42px',
                 height: '42px',
@@ -345,9 +348,9 @@ export default function HeroSection() {
             >
               <Icon name="flame" size={22} />
             </div>
-            <div>
+            <div className="stat-content">
               <Stat value="15" prefix="+" size="md" variant="accent" />
-              <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', marginTop: '2px' }}>
+              <div className="stat-label" style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', marginTop: '2px' }}>
                 عاماً من شواء الفحم الأصيل
               </div>
             </div>
@@ -355,6 +358,7 @@ export default function HeroSection() {
 
           {/* Item 3 */}
           <div
+            className="hero-stat-item"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -363,6 +367,7 @@ export default function HeroSection() {
             }}
           >
             <div
+              className="stat-icon-wrapper"
               style={{
                 width: '42px',
                 height: '42px',
@@ -377,9 +382,9 @@ export default function HeroSection() {
             >
               <Icon name="pot" size={22} />
             </div>
-            <div>
+            <div className="stat-content">
               <Stat value="40" prefix="+" size="md" variant="default" />
-              <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', marginTop: '2px' }}>
+              <div className="stat-label" style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', marginTop: '2px' }}>
                 صنفاً طازجاً من الفرن والشواية
               </div>
             </div>
@@ -387,6 +392,7 @@ export default function HeroSection() {
 
           {/* Item 4 */}
           <div
+            className="hero-stat-item"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -395,6 +401,7 @@ export default function HeroSection() {
             }}
           >
             <div
+              className="stat-icon-wrapper"
               style={{
                 width: '42px',
                 height: '42px',
@@ -409,9 +416,9 @@ export default function HeroSection() {
             >
               <Icon name="star" size={22} />
             </div>
-            <div>
+            <div className="stat-content">
               <Stat value="4.9" size="md" variant="accent" />
-              <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', marginTop: '2px' }}>
+              <div className="stat-label" style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', marginTop: '2px' }}>
                 تقييم ضيوف الدار ({restaurantConfig.serviceStats.ratingReviewsCount})
               </div>
             </div>
@@ -436,11 +443,36 @@ export default function HeroSection() {
           .hero-stats-grid {
             grid-template-columns: repeat(2, 1fr) !important;
             gap: 10px !important;
-            padding: 12px 14px !important;
+            padding: 12px 10px !important;
           }
           .hero-stat-item {
-            padding: 4px !important;
-            gap: 8px !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+            padding: 12px 8px !important;
+            gap: 6px !important;
+            background-color: var(--color-surface-alt) !important;
+            border-radius: var(--radius-lg) !important;
+            border: 1px solid var(--color-border-light) !important;
+          }
+          .hero-stat-item .stat-icon-wrapper {
+            width: 38px !important;
+            height: 38px !important;
+            margin-bottom: 2px !important;
+          }
+          .hero-stat-item .stat-content {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+            width: 100% !important;
+          }
+          .hero-stat-item .stat-label {
+            font-size: 0.72rem !important;
+            line-height: 1.4 !important;
+            margin-top: 3px !important;
+            text-align: center !important;
+            word-break: normal !important;
           }
         }
       `}</style>

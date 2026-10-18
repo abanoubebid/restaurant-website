@@ -1,8 +1,11 @@
 import React from 'react'
-import { restaurantConfig, navLinks } from '../../content/restaurantData'
+import { navLinks } from '../../content/restaurantData'
+import { useRestaurant } from '../../context/RestaurantContext'
 import Icon from '../base/Icon'
 
 export default function Footer() {
+  const { config } = useRestaurant()
+  const restaurantConfig = config
   const currentYear = new Date().getFullYear()
 
   return (
@@ -202,8 +205,8 @@ export default function Footer() {
                 color: 'rgba(253, 251, 247, 0.8)'
               }}
             >
-              <div>السبت إلى الأربعاء: 12:00 م - 01:00 ص</div>
-              <div>الخميس والجمعة: 12:00 م - 02:00 ص</div>
+              <div>{config.openingHoursSummary?.[0]?.days || 'السبت إلى الأربعاء'}: {config.openingHoursSummary?.[0]?.hours || '12:00 م - 01:00 ص'}</div>
+              <div>{config.openingHoursSummary?.[1]?.days || 'الخميس والجمعة'}: {config.openingHoursSummary?.[1]?.hours || '12:00 م - 02:00 ص'}</div>
               <div style={{ marginTop: 'var(--space-3)', color: 'var(--color-accent-glow)', fontSize: 'var(--text-xs)' }}>
                 ✨ خدمة التوصيل متوفرة طوال ساعات العمل.
               </div>
@@ -228,8 +231,31 @@ export default function Footer() {
           <div>
             جميع الحقوق محفوظة © {currentYear} {restaurantConfig.brand.legalName}.
           </div>
-          <div>
-            تم تصميم وبرمجة الموقع بعناية فائقة وتجربة عربية أصيلة.
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
+            <span>تم تصميم وبرمجة الموقع بعناية فائقة وتجربة عربية أصيلة.</span>
+            <a
+              href="/admin"
+              onClick={(e) => {
+                e.preventDefault()
+                window.history.pushState({}, '', '/admin')
+                window.dispatchEvent(new PopStateEvent('popstate'))
+              }}
+              style={{
+                color: 'var(--color-accent-glow)',
+                textDecoration: 'none',
+                fontWeight: '700',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '4px 10px',
+                backgroundColor: 'rgba(217, 119, 6, 0.15)',
+                borderRadius: '6px',
+                border: '1px solid rgba(217, 119, 6, 0.35)'
+              }}
+            >
+              👑 لوحة إدارة المحتوى والأكلات (للأدمن)
+            </a>
           </div>
         </div>
       </div>

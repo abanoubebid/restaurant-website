@@ -1,5 +1,5 @@
 import React from 'react'
-import { restaurantConfig } from '../content/restaurantData'
+import { useRestaurant } from '../context/RestaurantContext'
 import SectionHeading from '../components/ui/SectionHeading'
 import Card from '../components/ui/Card'
 import Button from '../components/ui/Button'
@@ -7,6 +7,8 @@ import Icon from '../components/base/Icon'
 import { trackEvent } from '../utils/analytics'
 
 export default function LocationSection() {
+  const { config } = useRestaurant()
+  const restaurantConfig = config
   // Current day of the week (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
   const currentDayIndex = typeof window !== 'undefined' ? new Date().getDay() : 0
 
@@ -93,9 +95,9 @@ export default function LocationSection() {
                   color: 'var(--color-text)'
                 }}
               >
-                <span>السبت إلى الأربعاء:</span>
+                <span>{config.openingHoursSummary?.[0]?.days || 'السبت إلى الأربعاء'}:</span>
                 <span style={{ color: 'var(--color-primary)', direction: 'rtl', fontWeight: '800' }}>
-                  <bdi dir="ltr">12:00</bdi> م — <bdi dir="ltr">01:00</bdi> ص
+                  {config.openingHoursSummary?.[0]?.hours || '12:00 م — 01:00 ص'}
                 </span>
               </div>
               <div
@@ -108,9 +110,9 @@ export default function LocationSection() {
                   color: 'var(--color-text)'
                 }}
               >
-                <span>الخميس والجمعة:</span>
+                <span>{config.openingHoursSummary?.[1]?.days || 'الخميس والجمعة'}:</span>
                 <span style={{ color: 'var(--color-accent-dark)', direction: 'rtl', fontWeight: '800' }}>
-                  <bdi dir="ltr">12:00</bdi> م — <bdi dir="ltr">02:00</bdi> ص
+                  {config.openingHoursSummary?.[1]?.hours || '12:00 م — 02:00 ص'}
                 </span>
               </div>
             </div>

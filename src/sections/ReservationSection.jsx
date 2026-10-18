@@ -14,8 +14,10 @@ import {
 } from '../utils/validators'
 import { submitReservation } from '../services/reservationService'
 import { trackEvent } from '../utils/analytics'
+import { useRestaurant } from '../context/RestaurantContext'
 
 export default function ReservationSection() {
+  const { addReservation } = useRestaurant()
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -113,6 +115,7 @@ export default function ReservationSection() {
     try {
       const response = await submitReservation(formData)
       if (response.success) {
+        addReservation(formData)
         setSubmitResult(response)
         trackEvent('reservation_submit_success', { guests: formData.guests })
       } else {

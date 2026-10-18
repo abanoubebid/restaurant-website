@@ -1,16 +1,17 @@
 import React, { useState, useRef } from 'react'
-import { menuData, restaurantConfig } from '../content/restaurantData'
+import { useRestaurant } from '../context/RestaurantContext'
 import SectionHeading from '../components/ui/SectionHeading'
 import Stat from '../components/base/Stat'
 import Icon from '../components/base/Icon'
 import { trackEvent } from '../utils/analytics'
 
 export default function MenuSection() {
-  const [activeCategory, setActiveCategory] = useState(menuData.categories[0].id)
+  const { menu, config } = useRestaurant()
+  const [activeCategory, setActiveCategory] = useState(menu.categories[0]?.id || 'grills')
   const tabListRef = useRef(null)
 
   const handleTabKeyDown = (e, index) => {
-    const tabsCount = menuData.categories.length
+    const tabsCount = menu.categories.length
     let nextIndex = index
 
     // In RTL: ArrowLeft moves FORWARD to next tab, ArrowRight moves BACK to previous tab
@@ -27,18 +28,20 @@ export default function MenuSection() {
     }
 
     e.preventDefault()
-    const nextCat = menuData.categories[nextIndex]
-    setActiveCategory(nextCat.id)
-    const targetTab = tabListRef.current?.querySelectorAll('[role="tab"]')[nextIndex]
-    targetTab?.focus()
-    trackEvent('menu_category_switch', { category: nextCat.id })
+    const nextCat = menu.categories[nextIndex]
+    if (nextCat) {
+      setActiveCategory(nextCat.id)
+      const targetTab = tabListRef.current?.querySelectorAll('[role="tab"]')[nextIndex]
+      targetTab?.focus()
+      trackEvent('menu_category_switch', { category: nextCat.id })
+    }
   }
 
-  const currentItems = menuData.items[activeCategory] || []
+  const currentItems = menu.items[activeCategory] || []
 
   const getDishWhatsAppUrl = (dishName) => {
     const text = `مساء الخير، حابب أطلب صنف: ${dishName} من قائمة دار الحطب.`
-    return `https://wa.me/${restaurantConfig.contact.whatsapp}?text=${encodeURIComponent(text)}`
+    return `https://wa.me/${config.contact.whatsapp}?text=${encodeURIComponent(text)}`
   }
 
   return (

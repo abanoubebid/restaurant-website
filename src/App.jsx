@@ -3,6 +3,7 @@ import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import MobileStickyBar from './components/layout/MobileStickyBar'
 import NotFound from './components/layout/NotFound'
+import AdminDashboard from './components/admin/AdminDashboard'
 import HeroSection from './sections/HeroSection'
 import SignatureSection from './sections/SignatureSection'
 import MenuSection from './sections/MenuSection'
@@ -13,6 +14,7 @@ import TestimonialsSection from './sections/TestimonialsSection'
 import LocationSection from './sections/LocationSection'
 import FaqSection from './sections/FaqSection'
 import ReservationSection from './sections/ReservationSection'
+import { RestaurantProvider } from './context/RestaurantContext'
 import { initAnalytics } from './utils/analytics'
 
 export default function App() {
@@ -28,58 +30,67 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState)
   }, [])
 
-  const is404 = currentRoute !== '/' && currentRoute !== '' && !currentRoute.startsWith('/#')
+  const isAdmin = currentRoute === '/admin' || currentRoute === '/admin/'
 
-  if (is404) {
-    return (
-      <div className="app-shell">
-        <a href="#main-content" className="skip-link">
-          الانتقال إلى المحتوى الرئيسي
-        </a>
-        <Header />
-        <main id="main-content">
-          <NotFound
-            onGoHome={() => {
-              window.history.pushState({}, '', '/')
-              setCurrentRoute('/')
-            }}
-          />
-        </main>
-        <Footer />
-        <MobileStickyBar />
-      </div>
-    )
-  }
+  const is404 = !isAdmin && currentRoute !== '/' && currentRoute !== '' && !currentRoute.startsWith('/#')
 
   return (
-    <div className="app-shell">
-      {/* Accessible Skip Link */}
-      <a href="#main-content" className="skip-link">
-        الانتقال إلى المحتوى الرئيسي
-      </a>
+    <RestaurantProvider>
+      {isAdmin ? (
+        <AdminDashboard
+          onBackToSite={() => {
+            window.history.pushState({}, '', '/')
+            setCurrentRoute('/')
+          }}
+        />
+      ) : is404 ? (
+        <div className="app-shell">
+          <a href="#main-content" className="skip-link">
+            الانتقال إلى المحتوى الرئيسي
+          </a>
+          <Header />
+          <main id="main-content">
+            <NotFound
+              onGoHome={() => {
+                window.history.pushState({}, '', '/')
+                setCurrentRoute('/')
+              }}
+            />
+          </main>
+          <Footer />
+          <MobileStickyBar />
+        </div>
+      ) : (
+        <div className="app-shell">
+          {/* Accessible Skip Link */}
+          <a href="#main-content" className="skip-link">
+            الانتقال إلى المحتوى الرئيسي
+          </a>
 
-      {/* Header & Navigation */}
-      <Header />
+          {/* Header & Navigation */}
+          <Header />
 
-      {/* Main Sections */}
-      <main id="main-content">
-        <HeroSection />
-        <SignatureSection />
-        <MenuSection />
-        <OffersSection />
-        <AboutSection />
-        <GallerySection />
-        <TestimonialsSection />
-        <LocationSection />
-        <FaqSection />
-        <ReservationSection />
-      </main>
+          {/* Main Sections */}
+          <main id="main-content">
+            <HeroSection />
+            <SignatureSection />
+            <MenuSection />
+            <OffersSection />
+            <AboutSection />
+            <GallerySection />
+            <TestimonialsSection />
+            <LocationSection />
+            <FaqSection />
+            <ReservationSection />
+          </main>
 
-      {/* Footer */}
-      <Footer />
+          {/* Footer */}
+          <Footer />
 
-      {/* Mobile Sticky Action Bar */}
-      <MobileStickyBar />
-    </div>
+          {/* Mobile Sticky Action Bar */}
+          <MobileStickyBar />
+        </div>
+      )}
+    </RestaurantProvider>
   )
 }

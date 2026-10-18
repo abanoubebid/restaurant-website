@@ -83,6 +83,21 @@ A professional, modern, fully responsive landing page (single page) for a restau
     - إضافة بطاقة ملخص بارزة بسطرين في أعلى جدول المواعيد بـ [LocationSection.jsx](file:///Users/abanoub/Documents/Codes/MyProject/antigrafty/restaurant-landing-page/src/sections/LocationSection.jsx).
     - تحديث شارة العمل المباشرة في [HeroSection.jsx](file:///Users/abanoub/Documents/Codes/MyProject/antigrafty/restaurant-landing-page/src/sections/HeroSection.jsx) والجدول التفصيلي والفوتر.
 
+13. **إصلاح بطاقات إحصائيات الهيرو على الموبايل (Mobile Hero Stats Reflow):**
+    - تحويل تصميم البطاقات الأربعة في الهيرو على شاشات الموبايل إلى تنسيق عمودي مريح (`flex-direction: column; align-items: center; text-align: center`).
+    - منح النص العرض الكامل للخلية (100% width) بدلاً من حصره في 60px بجانب الأيقونة، مما أنهى انكسار الكلمات الفردية على 4 أسطر («عاماً من / شواء / الفحم / الأصيل»).
+    - تغليف كل إحصائية داخل بطاقة فرعية أنيقة بحدود ناعمة وتوسيط متناسق للأيقونة والرقم والوصف.
+
+14. **لوحة تحكم كاملة للإدارة وسجل الحجوزات وإشعارات الطلبات (Full Admin Dashboard & Order Notifications):**
+    - توفير لوحة تحكم كاملة وسهلة مخصصة لوالدة العميل وللإدارة عبر المسار `/admin` مع رابط مباشر في أسفل الفوتر وفي قائمة الموبايل.
+    - **إدارة الأكلات وقائمة الطعام:** إضافة أكلات جديدة، تعديل الأسعار، تعديل الأوصاف، تمييز الأصناف الأكثر طلباً، وحذف أي صنف بنقرة واحدة.
+    - **سجل الحجوزات والطلبات المستلمة:** عرض جميع الحجوزات مع وقت الحجز، عدد الأفراد، الملاحظات، زر اتصال هاتفي مباشر، وزر مراسلة واتساب فوري.
+    - **نظام الإشعارات الفورية:**
+      1. إشعار واتساب مباشر: إرسال تفاصيل الحجز والطلب تلقائياً إلى واتساب والدته لتأكيد الطلب.
+      2. جرس تنبيه صوتي (Web Audio Chime): يصدر صوتاً تنبيهياً فورياً عند تسجيل أي حجز أو تقييم جديد.
+    - **إدارة التقييمات والمواعيد والتواصل:** إمكانية تعديل ساعات العمل، أرقام الواتساب والموبايل، وإدارة مراجعات العملاء.
+    - **الربط السحابي (Vercel / Cloudflare):** زر لنسخ كود الإعدادات المحدث بنقرة واحدة وتنزيل ملف JSON لتثبيت التحديثات على السحابة لجميع الزوار.
+
 ---
 
 ## 3. TASK STATUS
@@ -95,18 +110,20 @@ A professional, modern, fully responsive landing page (single page) for a restau
 - [x] Exact operating hours (Sat-Wed 12:00 PM-01:00 AM, Thu-Fri 12:00 PM-02:00 AM) updated across all sections.
 - [x] Testimonials avatars populated with real photos and initials fallback (no empty circles).
 - [x] Interactive review submission form added with instant publishing, star ratings, and localStorage persistence.
+- [x] Hero mobile stats cards refactored to vertical stacked layout, eliminating 1-word text wrapping.
+- [x] Full Admin Dashboard created (/admin) for dishes, menu, hours, contact, and reviews management.
+- [x] Reservations log and multi-channel notifications (WhatsApp direct + Audio chime) implemented.
 - [x] 100% harmony between food photography and dish descriptions.
 - [x] Build passes cleanly and all 13 automated tests pass.
-- [x] Percentage symbol unified to the left side (`%100`) matching `+15` and `+40`.
-- [x] Full mobile & tablet responsiveness verified with zero horizontal overflow and safe Arabic line-heights.
 - [x] Production build clean in `dist/`.
 
 ---
 
 ## 4. COMMIT & DEPLOY STATUS
 
-- Commit: `fix(reviews-hours): add real review avatars, interactive review form, and set exact operating hours`
+- Commit: `feat(admin): add full admin dashboard, mobile stats reflow, and reservation notifications`
 - Ready to push to GitHub: `git push origin main`.
+
 
 
 
