@@ -125,7 +125,7 @@ export default function LocationSection() {
                 gap: '2px'
               }}
             >
-              {restaurantConfig.openingHours.map((row) => {
+              {(restaurantConfig?.openingHours || []).map((row) => {
                 const isToday = row.dayKey === currentDayIndex
                 return (
                   <div

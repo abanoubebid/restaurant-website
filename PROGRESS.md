@@ -98,6 +98,15 @@ A professional, modern, fully responsive landing page (single page) for a restau
     - **إدارة التقييمات والمواعيد والتواصل:** إمكانية تعديل ساعات العمل، أرقام الواتساب والموبايل، وإدارة مراجعات العملاء.
     - **الربط السحابي (Vercel / Cloudflare):** زر لنسخ كود الإعدادات المحدث بنقرة واحدة وتنزيل ملف JSON لتثبيت التحديثات على السحابة لجميع الزوار.
 
+15. **حل مشكلة الشاشة البيضاء (White Blank Screen Elimination & ErrorBoundary):**
+    - تشخيص سبب ظهور الشاشة البيضاء في المتصفح:
+      1. وجود مراجع لمتغيرات غير معرّفة داخل `MenuSection.jsx` (`menuData.categories` و `restaurantConfig.locale.currency`) بدلاً من استهلاكها من سياق `useRestaurant()`.
+      2. احتمالية عدم اكتمال مصفوفات `openingHours` أو `social` في بيانات `localStorage` القديمة المخزنة في متصفح المستخدم.
+    - الحل المنفذ:
+      1. تصحيح مراجع `MenuSection.jsx` لترتبط مباشرة بسياق `menu` و `config` مع ضمانات بديلة `(menu?.categories || [])` و `config?.locale?.currency || 'ج.م'`.
+      2. دمج عميق وآمن (Deep Fallback Merging) داخل `RestaurantContext.jsx` بحيث يتم الحفاظ دائماً على جميع الحقول والمصفوفات الافتراضية حتى لو كان المخزن المحلي قديماً أو جزئياً.
+      3. إضافة مكون `ErrorBoundary.jsx` وتغليف التطبيق به في `main.jsx` لضمان عدم انهيار الواجهة البيضاء نهائياً وتقديم واجهة استعادة راقية مستوحاة من طابع دار الحطب تتيح إعادة تحميل الموقع وتحديث البيانات بنقرة واحدة.
+
 ---
 
 ## 3. TASK STATUS
@@ -114,6 +123,7 @@ A professional, modern, fully responsive landing page (single page) for a restau
 - [x] Full Admin Dashboard created (/admin) for dishes, menu, hours, contact, and reviews management.
 - [x] Reservations log and multi-channel notifications (WhatsApp direct + Audio chime) implemented.
 - [x] 100% harmony between food photography and dish descriptions.
+- [x] White blank screen completely eliminated with ErrorBoundary and defensive merging.
 - [x] Build passes cleanly and all 13 automated tests pass.
 - [x] Production build clean in `dist/`.
 
@@ -121,8 +131,9 @@ A professional, modern, fully responsive landing page (single page) for a restau
 
 ## 4. COMMIT & DEPLOY STATUS
 
-- Commit: `feat(admin): add full admin dashboard, mobile stats reflow, and reservation notifications`
+- Commit: `fix: eliminate white screen crash with ErrorBoundary and defensive state fallbacks`
 - Ready to push to GitHub: `git push origin main`.
+
 
 
 

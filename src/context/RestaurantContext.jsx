@@ -73,12 +73,38 @@ export function RestaurantProvider({ children }) {
       const saved = localStorage.getItem(STORAGE_KEY)
       if (saved) {
         const parsed = JSON.parse(saved)
-        if (parsed.config) setConfig(parsed.config)
-        if (parsed.menu) setMenu(parsed.menu)
-        if (parsed.signatures) setSignatures(parsed.signatures)
-        if (parsed.offers) setOffers(parsed.offers)
-        if (parsed.reviews) setReviews(parsed.reviews)
-        if (parsed.reservations) setReservations(parsed.reservations)
+        if (parsed.config && typeof parsed.config === 'object') {
+          setConfig({
+            ...initialConfig,
+            ...parsed.config,
+            brand: { ...initialConfig.brand, ...(parsed.config?.brand || {}) },
+            contact: { ...initialConfig.contact, ...(parsed.config?.contact || {}) },
+            social: Array.isArray(parsed.config?.social) && parsed.config.social.length > 0 ? parsed.config.social : initialConfig.social,
+            serviceStats: { ...initialConfig.serviceStats, ...(parsed.config?.serviceStats || {}) },
+            openingHours: Array.isArray(parsed.config?.openingHours) && parsed.config.openingHours.length > 0 ? parsed.config.openingHours : initialConfig.openingHours,
+            openingHoursSummary: Array.isArray(parsed.config?.openingHoursSummary) && parsed.config.openingHoursSummary.length > 0 ? parsed.config.openingHoursSummary : initialConfig.openingHoursSummary
+          })
+        }
+        if (parsed.menu && typeof parsed.menu === 'object') {
+          setMenu({
+            ...initialMenu,
+            ...parsed.menu,
+            categories: Array.isArray(parsed.menu?.categories) && parsed.menu.categories.length > 0 ? parsed.menu.categories : initialMenu.categories,
+            items: parsed.menu?.items && typeof parsed.menu.items === 'object' ? { ...initialMenu.items, ...parsed.menu.items } : initialMenu.items
+          })
+        }
+        if (Array.isArray(parsed.signatures) && parsed.signatures.length > 0) {
+          setSignatures(parsed.signatures)
+        }
+        if (Array.isArray(parsed.offers) && parsed.offers.length > 0) {
+          setOffers(parsed.offers)
+        }
+        if (Array.isArray(parsed.reviews) && parsed.reviews.length > 0) {
+          setReviews(parsed.reviews)
+        }
+        if (Array.isArray(parsed.reservations)) {
+          setReservations(parsed.reservations)
+        }
       }
     } catch (e) {
       console.warn('Could not read from localStorage', e)

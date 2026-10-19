@@ -70,7 +70,7 @@ export default function MenuSection() {
             WebkitOverflowScrolling: 'touch'
           }}
         >
-          {menuData.categories.map((cat, idx) => {
+          {(menu?.categories || []).map((cat, idx) => {
             const isActive = activeCategory === cat.id
             return (
               <button
@@ -196,7 +196,7 @@ export default function MenuSection() {
                 >
                   <Stat
                     value={item.price}
-                    suffix={restaurantConfig.locale.currency}
+                    suffix={config?.locale?.currency || 'ج.م'}
                     size="md"
                     variant="default"
                   />

@@ -76,7 +76,7 @@ export default function Footer() {
 
             {/* Social Links */}
             <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
-              {restaurantConfig.social.map((s) => (
+              {(restaurantConfig?.social || []).map((s) => (
                 <a
                   key={s.name}
                   href={s.url}
